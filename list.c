@@ -88,6 +88,21 @@ int list_destroy(struct List* list) {
   return 0;
 }
 
+int list_insertBefore(struct List* list, int index, void* content) {
+  return 0;
+}
+
+int list_insertAfter(struct List* list, int index, void* content) {
+  return 0;
+}
+
+int list_replace(struct List* list, int index, void* content) {
+  if (list->length == 0)
+  {
+    return LIST_FAILURE;
+  }
+}
+
 int list_length(struct List* list) {
   return list->length;
 }
@@ -96,16 +111,44 @@ int list_type() {
   return 0;  
 }
 
-void* list_elementInternal() {
-  return 0;  
+
+/**
+  Gibt einen Zeiger auf das ListElement am angegebenen Index zurück
+*/
+struct ListElement* list_elementInternal(struct List* list, int index) {
+  if (list->length == 0)
+  {
+    return (struct ListElement*) LIST_UNDEFINED;
+  }
+  struct ListElement* current_element;
+  int current_index = 0;
+  current_element = list->firstElement;
+  while (current_index != index)
+  {
+    if (current_index > index)
+    {
+      current_index--;
+      current_element = current_element->previousElement;
+    }
+    else
+    {
+      current_index++;
+      current_element = current_element->nextElement;
+    }
+  }
+  return current_element;  
 }
 
-void* list_element() {
-  return 0;  
-}
-
-int list_insert() {
-  return 0;
+void* list_element(struct List* list, int index) {
+  struct ListElement* current_element = list_elementInternal(list, index)->content;
+  if (current_element == LIST_UNDEFINED)
+  {
+    return (void*) current_element;
+  }
+  else
+  {
+    return current_element->content;
+  }
 }
 
 int list_append() {

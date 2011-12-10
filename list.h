@@ -22,8 +22,22 @@ enum LIST_CONSTANTS {
   LIST_LONG_DOUBLE         = -15,
   LIST_STRING              = -16,
   
+  LIST_FALSE               = 0,
+  LIST_FAILURE             = 0,  
+  LIST_TRUE                = 1,
+  LIST_SUCCESS             = 1,
+  
   LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
   LIST_STRING_CACHE_SIZE   = 32, /// Größe eines Cache-Strings
+};
+
+/**
+  Listen-Element enthält die notwendigen Informationen für eine zweifach, dynamisch verkettete Liste
+*/
+struct ListElement {
+  struct ListElement* previousElement; /// Zeiger auf vorheriges Element der Liste
+  struct ListElement* nextElement; /// Zeiger auf nächstes Element der Liste
+  void* content; /// Zeiger auf den Inhalt des Elements
 };
 
 /**
@@ -36,15 +50,7 @@ struct List {
   void* toString; /** Callback-Zeiger zu einer Funktion, welche das Element als String-Repräsentation
                       zurückliefert */
   void* compare; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht
-};
-
-/**
-  Listen-Element enthält die notwendigen Informationen für eine zweifach, dynamisch verkettete Liste
-*/
-struct ListElement {
-  struct ListElement* previousElement; /// Zeiger auf vorheriges Element der Liste
-  struct ListElement* nextElement; /// Zeiger auf nächstes Element der Liste
-  void* content; /// Zeiger auf den Inhalt des Elements
+  struct ListElement* firstElement; // Zeiger auf das erste Listenelement
 };
 
 struct List* list_create(int type);
