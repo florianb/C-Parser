@@ -4,7 +4,7 @@
   Wird benutzt um den Datentyp der Liste festzulegen.
 */
 enum LIST_CONSTANTS {
-  LIST_UNSET               = 0, /// Konstante für ungesetzte Zeiger
+  LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
   LIST_USER_DEFINED        = 0,
   LIST_BOOL                = -1,
   LIST_CHAR                = -2,
@@ -26,7 +26,7 @@ enum LIST_CONSTANTS {
 /**
   Listen-Kopf enthält alle wichtigen Informationen zur Pflege und Benutzung der Liste
 */
-struct ListHeader {
+struct List {
   unsigned int elementSize; /// Größe eines Elements in Bytes
   unsigned int length; /// Anzahl der Listenelemente
   int type; /// Datentyp der Listenelemente - Wichtig, eine Liste ist immer homogen
@@ -43,3 +43,6 @@ struct ListElement {
   struct ListElement* nextElement; /// Zeiger auf nächstes Element der Liste
   void* content; /// Zeiger auf den Inhalt des Elements
 };
+
+struct List* list_create(int type);
+int list_destroy(struct List* list);

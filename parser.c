@@ -4,7 +4,12 @@
 #include "list.h"
 
 int main() {
-  printf("%d", LIST_USER_DEFINED);
+  struct List* list;
+  
+  list = list_create(LIST_INT);
+  list_destroy(list);
+  
+  
   puts("Hallo Welt.\n");
   return 0;
 }
