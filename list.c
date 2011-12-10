@@ -83,35 +83,6 @@ struct List* list_create(int type) {
   return newList;
 }
 
-int list_destroy(struct List* list) {
-  free(list);
-  return 0;
-}
-
-int list_insertBefore(struct List* list, int index, void* content) {
-  return 0;
-}
-
-int list_insertAfter(struct List* list, int index, void* content) {
-  return 0;
-}
-
-int list_replace(struct List* list, int index, void* content) {
-  if (list->length == 0)
-  {
-    return LIST_FAILURE;
-  }
-}
-
-int list_length(struct List* list) {
-  return list->length;
-}
-
-int list_type() {
-  return 0;  
-}
-
-
 /**
   Gibt einen Zeiger auf das ListElement am angegebenen Index zurück
 */
@@ -139,6 +110,9 @@ struct ListElement* list_elementInternal(struct List* list, int index) {
   return current_element;  
 }
 
+/**
+  Gibt einen Zeiger auf den Content des Elements am angegebenen Indesx zurück
+*/
 void* list_element(struct List* list, int index) {
   struct ListElement* current_element = list_elementInternal(list, index)->content;
   if (current_element == LIST_UNDEFINED)
@@ -149,6 +123,50 @@ void* list_element(struct List* list, int index) {
   {
     return current_element->content;
   }
+}
+
+int list_destroy(struct List* list) {
+  free(list);
+  return 0;
+}
+
+int list_insertBefore(struct List* list, int index, void* content) {
+  return 0;
+}
+
+int list_insertAfter(struct List* list, int index, void* content) {
+  return 0;
+}
+
+/**
+  Ersetzt den Inhalt eines Elements mit dem angegebenen Inhalt, der Typ wird durch die Liste erkannt
+*/
+int list_replace(struct List* list, int index, void* new_content) {
+  if (list->length == 0)
+  {
+    return LIST_FAILURE;
+  }
+  
+  void* old_content = list_element(list, index);
+  
+  if (list->type == LIST_STRING) {
+    free(old_content);
+    old_content = malloc(strlen(new_content) + 1);
+    strcpy(old_content, new_content);
+  }
+  else
+  {
+    memcpy(old_content, new_content, list->elementSize);
+  }
+  return LIST_SUCCESS;
+}
+
+int list_length(struct List* list) {
+  return list->length;
+}
+
+int list_type(struct List* list) {
+  return list->type;
 }
 
 int list_append() {
@@ -265,6 +283,6 @@ void list_prettyPrint(struct List* list) {
   puts("\n");
 }
 
-void list_prettyPrintElement() {
+void list_prettyPrintElement(struct List* list, int index) {
   
 }
