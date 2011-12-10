@@ -3,27 +3,25 @@
   
   Wird benutzt um den Datentyp der Liste festzulegen.
 */
-enum LIST_DATATYPES {
-  USER_DEFINED        = 0,
-  BOOL                = -1,
-  CHAR                = -2,
-  SIGNED_CHAR         = -3,
-  UNSIGNED_CHAR       = -4,
-  SHORT               = -5,
-  UNSIGNED_SHORT      = -6,
-  INT                 = -7,
-  UNSIGNED_INT        = -8,
-  LONG                = -9,
-  UNSIGNED_LONG       = -10,
-  LONG_LONG           = -11,
-  UNSIGNED_LONG_LONG  = -12,
-  FLOAT               = -13,
-  DOUBLE              = -14,
-  LONG_DOUBLE         = -15
+enum LIST_CONSTANTS {
+  LIST_UNSET               = 0, /// Konstante für ungesetzte Zeiger
+  LIST_USER_DEFINED        = 0,
+  LIST_BOOL                = -1,
+  LIST_CHAR                = -2,
+  LIST_SIGNED_CHAR         = -3,
+  LIST_UNSIGNED_CHAR       = -4,
+  LIST_SHORT               = -5,
+  LIST_UNSIGNED_SHORT      = -6,
+  LIST_INT                 = -7,
+  LIST_UNSIGNED_INT        = -8,
+  LIST_LONG                = -9,
+  LIST_UNSIGNED_LONG       = -10,
+  LIST_LONG_LONG           = -11,
+  LIST_UNSIGNED_LONG_LONG  = -12,
+  LIST_FLOAT               = -13,
+  LIST_DOUBLE              = -14,
+  LIST_LONG_DOUBLE         = -15
 };
-
-/// Konstante für ungesetzte Zeiger
-const int LIST_UNSET = 0;
 
 /**
   Listen-Kopf enthält alle wichtigen Informationen zur Pflege und Benutzung der Liste
