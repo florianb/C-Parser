@@ -4,7 +4,6 @@
   Wird benutzt um den Datentyp der Liste festzulegen.
 */
 enum LIST_CONSTANTS {
-  LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
   LIST_USER_DEFINED        = 0,
   LIST_BOOL                = -1,
   LIST_CHAR                = -2,
@@ -20,7 +19,10 @@ enum LIST_CONSTANTS {
   LIST_UNSIGNED_LONG_LONG  = -12,
   LIST_FLOAT               = -13,
   LIST_DOUBLE              = -14,
-  LIST_LONG_DOUBLE         = -15
+  LIST_LONG_DOUBLE         = -15,
+  
+  LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
+  LIST_STRING_CACHE_SIZE   = 32, /// Größe eines Cache-Strings
 };
 
 /**
@@ -32,7 +34,7 @@ struct List {
   int type; /// Datentyp der Listenelemente - Wichtig, eine Liste ist immer homogen
   void* toString; /** Callback-Zeiger zu einer Funktion, welche das Element als String-Repräsentation
                       zurückliefert */
-  void* equals; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht
+  void* compare; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht
 };
 
 /**
@@ -46,3 +48,4 @@ struct ListElement {
 
 struct List* list_create(int type);
 int list_destroy(struct List* list);
+void list_prettyPrint(struct List* list);

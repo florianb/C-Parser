@@ -7,6 +7,9 @@ int main() {
   struct List* list;
   
   list = list_create(LIST_INT);
+  
+  list_prettyPrint(list);
+  
   list_destroy(list);
   
   
