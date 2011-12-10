@@ -8,7 +8,7 @@ struct List* list_create(int type) {
   struct List* newList;
   int elementSize = 0;
   
-  if ((LIST_LONG_DOUBLE <= type) && (type < LIST_USER_DEFINED))
+  if ((LIST_STRING <= type) && (type < LIST_USER_DEFINED))
   {
     switch (type)
     {
@@ -56,6 +56,9 @@ struct List* list_create(int type) {
         break;
       case LIST_LONG_DOUBLE:
         elementSize = sizeof(long double);
+        break;
+      case LIST_STRING:
+        elementSize = -1;
         break;
     }
   }
@@ -129,7 +132,7 @@ int list_sort() {
   return 0;  
 }
 
-int list_compare() {
+int list_compareElements() {
   return 0;  
 }
 
@@ -185,14 +188,24 @@ void list_prettyPrint(struct List* list) {
     case LIST_LONG_DOUBLE:
       strncpy(stringCache, "long double", LIST_STRING_CACHE_SIZE);
       break;
+    case LIST_STRING:
+      strncpy(stringCache, "string", LIST_STRING_CACHE_SIZE);
+      break;
   }
   printf("  - Contains elements of the type \"%s\" (%d bytes per element).\n",
           stringCache,
           list->elementSize);
   printf("  - Contains %d element/s.\n", list->length);
-  printf("  - Complete size: %d bytes\n\n", (int) (sizeof(struct List) +
-          sizeof(struct ListElement) * list->length +
-          list->elementSize * list->length));
+  if (list->type != LIST_STRING)
+  {
+    printf("  - Complete size: %d bytes\n\n", (int) (sizeof(struct List) +
+            sizeof(struct ListElement) * list->length +
+            list->elementSize * list->length));
+  }
+  else
+  {
+    puts("  - The complete size can't be calculated for strings.\n\n");
+  }
 
   if (list->toString == LIST_UNDEFINED)
     strncpy(stringCache, "not", LIST_STRING_CACHE_SIZE);

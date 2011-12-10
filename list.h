@@ -20,6 +20,7 @@ enum LIST_CONSTANTS {
   LIST_FLOAT               = -13,
   LIST_DOUBLE              = -14,
   LIST_LONG_DOUBLE         = -15,
+  LIST_STRING              = -16,
   
   LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
   LIST_STRING_CACHE_SIZE   = 32, /// Größe eines Cache-Strings
