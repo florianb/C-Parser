@@ -51,3 +51,11 @@ int list_sort() {
 int list_equals() {
   
 }
+
+void list_prettyPrintList() {
+  
+}
+
+void list_prettyPrintElement() {
+  
+}
