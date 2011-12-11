@@ -5,16 +5,6 @@
 #include <string.h>
 
 
-void list_prettyPrintElement(struct ListElement* given_element) {
-  printf("  # Element %p\n", given_element);
-  printf("     - next:     %p\n", given_element->nextElement);
-  printf("     - previous: %p\n", given_element->previousElement);
-  if (given_element->content == LIST_UNDEFINED)
-    puts("     - content:  undefined\n");
-  else
-    printf("     - content:  %p\n\n", given_element->content);
-}
-
 /**
   Erstellt eine leere Liste vom angegebenen Typ
 */
@@ -251,11 +241,28 @@ int list_setContent(struct List* list, int index, void* new_content) {
   return LIST_SUCCESS;
 }
 
+int helper_modulo(int a, int b)
+{
+  int result = a;
+  if (a < 0)
+  {
+    result *= -1;
+  }
+  result = result % b;
+  if (a < 0)
+  {
+    result *= -1;
+  }
+  return result;
+}
+
 /**
   Fügt ein neues Element mit dem angegebenen Inhalt vor dem Element an dem gegebenen Index ein, das bestehende Element wir dnach hinten verschoben
 */
 int list_insertBefore(struct List* list, int index, void* content) {
   struct ListElement* new_element = list_createElement();
+  
+  index = index % list->length;
   
   //printf("Insert content before #%d.\n", index);
   if (list->length == 0) {
@@ -264,6 +271,7 @@ int list_insertBefore(struct List* list, int index, void* content) {
   }
   else
   {
+    index = helper_modulo(index, list->length);
     struct ListElement* given_element = list_elementInternal(list, index);
     //puts("Modifying Element:");
     //list_prettyPrintElement(given_element);
@@ -292,11 +300,16 @@ int list_insertBefore(struct List* list, int index, void* content) {
 */
 int list_insertAfter(struct List* list, int index, void* content) {
   struct ListElement* new_element = list_createElement();
+  
+  printf("Working with raw element #%d (length: %d).\n", index, list->length);
+  
   if (list->length == 0) {
     list->firstElement = new_element;
   }
   else
   {
+    index = helper_modulo(index, list->length);
+    printf("Working with element #%d (length: %d).\n", index, list->length);
     struct ListElement* given_element = list_elementInternal(list, index);
     new_element->nextElement = given_element->nextElement;
     new_element->previousElement = given_element;
@@ -304,7 +317,10 @@ int list_insertAfter(struct List* list, int index, void* content) {
     given_element->nextElement = new_element;
   }
   list->length++;
-  return list_setContent(list, index + 1, content);
+  if (index >= 0) /// Ausgleich der Index-Verschiebung durch Einfügen des neuen Elements
+    index++;
+  
+  return list_setContent(list, index, content);
 }
 
 /**
@@ -337,9 +353,96 @@ int list_remove() {
   return 0;  
 }
 
-int list_toString() {
-  return 0;
+void list_elementContentToString(struct List* list, struct ListElement* element, char* destination, int max) {
+  void* content = element->content;
+  
+  if (list->type != LIST_USER_DEFINED && list->toString == LIST_UNDEFINED)
+  {
+    switch (list->type)
+    {
+      case LIST_BOOL:
+        if (*((short*) content) == 0)
+          snprintf(destination, max, "false (%d)", *((short*) content));
+        else
+          snprintf(destination, max, "true (%d)", *((short*) content));
+        break;
+      case LIST_CHAR:
+        snprintf(destination, max, "%c", *((char*) content));
+        break;
+      case LIST_SIGNED_CHAR:
+        snprintf(destination, max, "%c (%hhd)", *((char*) content), *((signed char*) content));
+        break;
+      case LIST_UNSIGNED_CHAR:
+        snprintf(destination, max, "%c", *((char*) content));
+        break;
+      case LIST_SHORT:
+        snprintf(destination, max, "%hd", *((short*) content));
+        break;
+      case LIST_UNSIGNED_SHORT:
+        snprintf(destination, max, "%hd", *((unsigned short*) content));
+        break;
+      case LIST_INT:
+        snprintf(destination, max, "%d", *((int*) content));
+        break;
+      case LIST_UNSIGNED_INT:
+        snprintf(destination, max, "%d", *((unsigned short*) content));
+        break;
+      case LIST_LONG:
+        snprintf(destination, max, "%ld", *((long*) content));
+        break;
+      case LIST_UNSIGNED_LONG:
+        snprintf(destination, max, "%ld", *((unsigned long*) content));
+        break;
+      case LIST_LONG_LONG:
+        snprintf(destination, max, "%lld", *((long long*) content));
+        break;
+      case LIST_UNSIGNED_LONG_LONG:
+        snprintf(destination, max, "%lld", *((unsigned long long*) content));
+        break;
+      case LIST_FLOAT:
+        snprintf(destination, max, "%f", *((float*) content));
+        break;
+      case LIST_DOUBLE:
+        snprintf(destination, max, "%lf", *((double*) content));
+        break;
+      case LIST_LONG_DOUBLE:
+        snprintf(destination, max, "%Lf", *((long double*) content));
+        break;
+      case LIST_STRING:
+        strncpy(destination, content, max);
+        break;
+    }
+  }
+  else
+  {
+    void (*customToString) (void*, char*, int);
+    customToString = list->toString;
+    (*customToString) (content, destination, max);
+  }
 }
+
+void list_toString(struct List* list, int index, char* destination, int max) {
+  list_elementContentToString(list, list_elementInternal(list, index), destination, max);
+}
+
+void list_prettyPrintElement(struct List* list, struct ListElement* given_element) {
+  printf("  # Element %p\n", given_element);
+  printf("     - next:     %p\n", given_element->nextElement);
+  printf("     - previous: %p\n", given_element->previousElement);
+  if (given_element->content == LIST_UNDEFINED)
+  {
+    puts("     - content:  undefined\n");
+  }
+  else
+  {
+    printf("     - content:  %p\n\n", given_element->content);
+    
+    char contentString[LIST_STRING_SIZE] = "";
+    list_elementContentToString(list, given_element, contentString, LIST_STRING_SIZE);
+    printf("     - toString: %s\n", contentString);
+  }
+}
+
 
 int list_sort() {
   return 0;  
@@ -444,7 +547,7 @@ void list_prettyPrint(struct List* list) {
     for (int i = 0; i < list->length; i++)
     {
       element = list_elementInternal(list, i);
-      list_prettyPrintElement(element);
+      list_prettyPrintElement(list, element);
     }
   }
   

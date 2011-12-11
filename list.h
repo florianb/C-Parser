@@ -29,6 +29,7 @@ enum LIST_CONSTANTS {
   
   LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
   LIST_STRING_CACHE_SIZE   = 32, /// Größe eines Cache-Strings
+  LIST_STRING_SIZE         = 256 /// Größe eines regulären Strings
 };
 
 /**
