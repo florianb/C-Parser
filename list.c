@@ -130,7 +130,7 @@ struct ListElement* list_elementInternal(struct List* list, int index) {
       current_element = current_element->nextElement;
     }
     
-    puts("Destroying:");
+    puts("Got next element:");
     list_prettyPrintElement(current_element);
   }
   return current_element;  
@@ -223,7 +223,7 @@ int list_setContent(struct List* list, int index, void* new_content) {
   
   struct ListElement* element = list_elementInternal(list, index);
   
-  printf("Overwriting content at %p\n", element->content);
+  printf("Overwriting content probably at %p\n", element->content);
   
   if (list->type == LIST_STRING) {
     if (element->content != LIST_UNDEFINED)
@@ -437,6 +437,17 @@ void list_prettyPrint(struct List* list) {
     puts("# First Element is undefined.\n");
   else
     printf("# First Element at: %p\n", list->firstElement);
+  
+  puts(" - Crawling elements..");
+  if (list->length > 0)
+  {
+    struct ListElement* element;
+    for (int i = 0; i < list->length; i++)
+    {
+      element = list_elementInternal(list, i);
+      list_prettyPrintElement(element);
+    }
+  }
   
   puts("\n");
 }
