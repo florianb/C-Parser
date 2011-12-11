@@ -17,16 +17,14 @@ int main() {
   
   list_insertBefore(list, 0, &a);
   
-  printf("parser: List-Element at index 0: %d\n\n", (int) list_element(list, 0));  
-  
   list_prettyPrint(list);
   //list_setContent(list, 0, &b);
   
   list_insertBefore(list, 0, &b);
   
-  list_prettyPrint(list);
+  list_element(list, 0);
   
-  printf("List-Element at index 0: %d\n", (int) list_element(list, 0));
+  list_prettyPrint(list);
   
   list_destroy(list);
   

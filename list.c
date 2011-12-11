@@ -9,7 +9,10 @@ void list_prettyPrintElement(struct ListElement* given_element) {
   printf("  # Element %p\n", given_element);
   printf("     - next:     %p\n", given_element->nextElement);
   printf("     - previous: %p\n", given_element->previousElement);
-  printf("     - content:  %p\n\n", given_element->content);
+  if (given_element->content == LIST_UNDEFINED)
+    puts("     - content:  undefined\n");
+  else
+    printf("     - content:  %p\n\n", given_element->content);
 }
 
 /**
@@ -84,12 +87,17 @@ struct List* list_create(int type) {
   }
   
   newList = malloc(sizeof(struct List));
+  if (newList == NULL) {
+    puts("list_create:1: Fehler, Speicher konnte nicht reserviert werden.");
+    exit(1);
+  }
   
   newList->elementSize = elementSize;
   newList->length = 0;
   newList->type = type;
   newList->toString = LIST_UNDEFINED;
   newList->compare = LIST_UNDEFINED;
+  newList->firstElement = LIST_UNDEFINED;
   
   return newList;
 }
@@ -122,7 +130,7 @@ struct ListElement* list_elementInternal(struct List* list, int index) {
       current_element = current_element->nextElement;
     }
     
-    puts("Destroying:\n");
+    puts("Destroying:");
     list_prettyPrintElement(current_element);
   }
   return current_element;  
@@ -132,7 +140,10 @@ struct ListElement* list_elementInternal(struct List* list, int index) {
   Gibt einen Zeiger auf den Content des Elements am angegebenen Index zurück
 */
 void* list_element(struct List* list, int index) {
-  struct ListElement* current_element = list_elementInternal(list, index)->content;
+  printf("Asking for element #%d.\n", index);
+  struct ListElement* current_element = list_elementInternal(list, index);
+  puts("Element found:");
+  list_prettyPrintElement(current_element);
   if (current_element == LIST_UNDEFINED)
   {
     return (void*) current_element;
@@ -149,11 +160,15 @@ void* list_element(struct List* list, int index) {
 struct ListElement* list_createElement()
 {
   struct ListElement* new_element = malloc(sizeof(struct ListElement));
+  if (new_element == NULL) {
+    puts("list_createElement:1: Fehler, Speicher konnte nicht reserviert werden.");
+    exit(1);
+  }
   new_element->previousElement = new_element;
   new_element->nextElement = new_element;
   new_element->content = (struct ListElement*) LIST_UNDEFINED;
   
-  puts("Created:\n");
+  puts("Created:");
   list_prettyPrintElement(new_element);
   
   return new_element;
@@ -164,12 +179,12 @@ struct ListElement* list_createElement()
 */
 int list_destroyElement(struct ListElement* element)
 {
-  puts("Destroying:\n");
+  puts("Destroying element:");
   list_prettyPrintElement(element);
   
   if (element->content != LIST_UNDEFINED)
   {
-    puts("destroyed element-content.\n");
+    puts("Destroyed element-content.");
     free(element->content);
   }
   free(element);
@@ -182,15 +197,15 @@ int list_destroyElement(struct ListElement* element)
 int list_destroy(struct List* list) {
   if (list->length > 0)
   {
-    struct ListElement* next_element = list->firstElement;
-    next_element = next_element->nextElement;
-    list_destroyElement(list->firstElement);
-    puts("freed once.\n");
-    while (list->firstElement != next_element)
+    struct ListElement* element;
+    struct ListElement* next_element;
+    next_element = list->firstElement;
+    for (int i = 0; i < list->length; i++)
     {
-      puts("freed another while..\n");
+      element = next_element;
       next_element = next_element->nextElement;
-      list_destroyElement(next_element->previousElement);
+      printf("Freeing element %p.\n", element);
+      list_destroyElement(element);
     }
   }
   free(list);
@@ -216,6 +231,11 @@ int list_setContent(struct List* list, int index, void* new_content) {
       free(element->content);
     }
     element->content = malloc(strlen(new_content) + 1);
+    if (element->content == NULL) {
+      puts("list_setContent:1: Fehler, Speicher konnte nicht reserviert werden.");
+      exit(1);
+    }
+    printf("Copying string to %p\n", element->content);
     strcpy(element->content, new_content);
   }
   else
@@ -223,6 +243,10 @@ int list_setContent(struct List* list, int index, void* new_content) {
     if (element->content == LIST_UNDEFINED)
     {
       element->content = malloc(list->elementSize);
+      if (element->content == NULL) {
+        puts("list_setContent:2: Fehler, Speicher konnte nicht reserviert werden.");
+        exit(2);
+      }
     }
     printf("Copying content to %p\n", element->content);
     memcpy(element->content, new_content, list->elementSize);
@@ -236,20 +260,31 @@ int list_setContent(struct List* list, int index, void* new_content) {
 */
 int list_insertBefore(struct List* list, int index, void* content) {
   struct ListElement* new_element = list_createElement();
+  
+  printf("Insert content before #%d.\n", index);
   if (list->length == 0) {
     list->firstElement = new_element;
+    puts("First element of list set.");
   }
   else
   {
     struct ListElement* given_element = list_elementInternal(list, index);
+    puts("Modifying Element:");
+    list_prettyPrintElement(given_element);
     if (list->firstElement == given_element)
     {
       list->firstElement = new_element;
+      puts("Reset first element of list.");
     }
+    new_element->nextElement = given_element;
+    new_element->previousElement = given_element->previousElement;
     given_element->previousElement->nextElement = new_element;
     given_element->previousElement = new_element;
+    puts("Modification finished:");
+    list_prettyPrintElement(given_element);
   }
   list->length++;
+  puts("Increased length of list.");
   return list_setContent(list, index, content);
 }
 
@@ -264,6 +299,8 @@ int list_insertAfter(struct List* list, int index, void* content) {
   else
   {
     struct ListElement* given_element = list_elementInternal(list, index);
+    new_element->nextElement = given_element->nextElement;
+    new_element->previousElement = given_element;
     given_element->nextElement->previousElement = new_element;
     given_element->nextElement = new_element;
   }
@@ -396,7 +433,10 @@ void list_prettyPrint(struct List* list) {
     strncpy(stringCache, "", LIST_STRING_CACHE_SIZE);
   printf("  - A compare()-callback is %s defined.\n", stringCache);
   
-  printf("# First Element at: %p\n", list->firstElement);
+  if (list->firstElement == LIST_UNDEFINED)
+    puts("# First Element is undefined.\n");
+  else
+    printf("# First Element at: %p\n", list->firstElement);
   
   puts("\n");
 }
