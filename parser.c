@@ -22,7 +22,8 @@ int main() {
   
   list_insertBefore(list, 0, &c);
   list_insertBefore(list, 0, &d);
-  
+  list_insertBefore(list, -1, &d);
+  list_insertBefore(list, -1, &d);
   list_prettyPrint(list);
   //list_setContent(list, 0, &b);
   
@@ -31,8 +32,8 @@ int main() {
   //printf("Value of &a: %d\n", *((int*) list_element(list, 1)));
   //printf("Value of &b: %d\n", *((int*) list_element(list, 0)));
   
-  printf("Value of &c: %s\n", *((char*) list_element(list, 1)));
-  printf("Value of &d: %s\n", *((char*) list_element(list, 0)));
+  printf("Value of &c: %s\n", list_element(list, 1));
+  printf("Value of &d: %s\n", list_element(list, 0));
   
   list_prettyPrint(list);
   
