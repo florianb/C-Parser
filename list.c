@@ -326,6 +326,9 @@ int list_insertAfter(struct List* list, int index, void* content) {
   return list_setContent(list, index, content);
 }
 
+/**
+  Enfernt das Element mit dem angegebenen Index aus der Liste.
+*/
 int list_remove(struct List* list, int index) {
   if (list->length > 0)
   {
@@ -364,16 +367,35 @@ int list_type(struct List* list) {
   return list->type;
 }
 
+/**
+  Hängt ein Element, mit content als Inhalt, an die Liste an
+*/
 int list_append(struct List* list, void* content) {
   return list_insertAfter(list, -1, content);
 }
 
-int list_push() {
-  return 0;  
+/**
+  Hängt ein Element, mit content als Inhalt, an die Liste an (Alias für list_append)
+*/
+int list_push(struct List* list, void* content) {
+  return list_append(list, content);
 }
 
-int list_pop() {
-  return 0;  
+/**
+  Kopiert den Inhalt des letzten Elements der Liste in content und entfernt das Element anschließend
+  aus der Liste
+*/
+int list_pop(struct List* list, void* content) {
+  if (list->type == LIST_STRING)
+  {
+    strcpy(list_element(list, -1), content);
+  }
+  else
+  {
+    memcpy(list_element(list, -1), content, list->elementSize);
+  }
+  list_remove(list, -1);
+  return LIST_SUCCESS;
 }
 
 void list_elementContentToString(struct List* list, struct ListElement* element, char* destination, int max) {
@@ -471,8 +493,237 @@ int list_sort() {
   return 0;  
 }
 
-int list_compareElements() {
-  return 0;  
+/**
+  Vergleicht zwei Listenelemente miteinander
+*/
+int list_compareElements(struct List* list, int index_a, int index_b) {
+  void* a = list_element(list, index_a);
+  void* b = list_element(list, index_b);
+  if (list->type != LIST_USER_DEFINED && list->compare == LIST_UNDEFINED)
+  {
+    switch (list->type)
+    {
+      case LIST_BOOL:
+        if ((*((int*) a) == 0 && *((int*) b) == 0) || (*((int*) a) != 0 && *((int*) b) != 0))
+        {
+          return 0;
+        }
+        else if (*((int*) b) == 0)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_CHAR:
+        if (*((char*) a) == *((char*) b))
+        {
+          return 0;
+        }
+        else if (*((char*) a) > *((char*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_SIGNED_CHAR:
+        if (*((signed char*) a) == *((signed char*) b))
+        {
+          return 0;
+        }
+        else if (*((signed char*) a) > *((signed char*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_UNSIGNED_CHAR:
+        if (*((unsigned char*) a) == *((unsigned char*) b))
+        {
+          return 0;
+        }
+        else if (*((unsigned char*) a) > *((unsigned char*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_SHORT:
+        if (*((short*) a) == *((short*) b))
+        {
+          return 0;
+        }
+        else if (*((short*) a) > *((short*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_UNSIGNED_SHORT:
+        if (*((unsigned short*) a) == *((unsigned short*) b))
+        {
+          return 0;
+        }
+        else if (*((unsigned short*) a) > *((unsigned short*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_INT:
+        if (*((int*) a) == *((int*) b))
+        {
+          return 0;
+        }
+        else if (*((int*) a) > *((int*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_UNSIGNED_INT:
+        if (*((unsigned int*) a) == *((unsigned int*) b))
+        {
+          return 0;
+        }
+        else if (*((unsigned int*) a) > *((unsigned int*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_LONG:
+        if (*((long*) a) == *((long*) b))
+        {
+          return 0;
+        }
+        else if (*((long*) a) > *((long*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_UNSIGNED_LONG:
+        if (*((unsigned long*) a) == *((unsigned long*) b))
+        {
+          return 0;
+        }
+        else if (*((unsigned long*) a) > *((unsigned long*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_LONG_LONG:
+        if (*((long long*) a) == *((long long*) b))
+        {
+          return 0;
+        }
+        else if (*((long long*) a) > *((long long*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_UNSIGNED_LONG_LONG:
+        if (*((unsigned long long*) a) == *((unsigned long long*) b))
+        {
+          return 0;
+        }
+        else if (*((unsigned long long*) a) > *((unsigned long long*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_FLOAT:
+        if (*((float*) a) == *((float*) b))
+        {
+          return 0;
+        }
+        else if (*((float*) a) > *((float*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_DOUBLE:
+        if (*((double*) a) == *((double*) b))
+        {
+          return 0;
+        }
+        else if (*((double*) a) > *((double*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_LONG_DOUBLE:
+        if (*((long double*) a) == *((long double*) b))
+        {
+          return 0;
+        }
+        else if (*((long double*) a) > *((long double*) b))
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        break;
+      case LIST_STRING:
+        return strcmp((char*) a, (char*) b);
+        break;
+    }
+  }
+  else
+  {
+    int (*customCompare) (void*, void*);
+    customCompare = list->compare;
+    return (*customCompare) (a, b);
+  }
 }
 
 void list_prettyPrint(struct List* list) {
