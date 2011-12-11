@@ -6,10 +6,10 @@
 
 
 void list_prettyPrintElement(struct ListElement* given_element) {
-  printf("  # Element %X\n", (unsigned int) given_element);
-  printf("     - next:     %X\n", (unsigned int) given_element->nextElement);
-  printf("     - previous: %X\n", (unsigned int) given_element->previousElement);
-  printf("     - content:  %X\n\n", (unsigned int) given_element->content);
+  printf("  # Element %p\n", given_element);
+  printf("     - next:     %p\n", given_element->nextElement);
+  printf("     - previous: %p\n", given_element->previousElement);
+  printf("     - content:  %p\n\n", given_element->content);
 }
 
 /**
@@ -206,23 +206,26 @@ int list_setContent(struct List* list, int index, void* new_content) {
     return LIST_FAILURE;
   }
   
-  void* old_content = list_element(list, index);
+  struct ListElement* element = list_elementInternal(list, index);
+  
+  printf("Overwriting content at %p\n", element->content);
   
   if (list->type == LIST_STRING) {
-    if (old_content != LIST_UNDEFINED)
+    if (element->content != LIST_UNDEFINED)
     {
-      free(old_content);
+      free(element->content);
     }
-    old_content = malloc(strlen(new_content) + 1);
-    strcpy(old_content, new_content);
+    element->content = malloc(strlen(new_content) + 1);
+    strcpy(element->content, new_content);
   }
   else
   {
-    if (old_content == LIST_UNDEFINED)
+    if (element->content == LIST_UNDEFINED)
     {
-      old_content = malloc(list->elementSize);
+      element->content = malloc(list->elementSize);
     }
-    memcpy(old_content, new_content, list->elementSize);
+    printf("Copying content to %p\n", element->content);
+    memcpy(element->content, new_content, list->elementSize);
   }
   
   return LIST_SUCCESS;
@@ -313,7 +316,7 @@ int list_compareElements() {
 void list_prettyPrint(struct List* list) {
   char stringCache[LIST_STRING_CACHE_SIZE] = "";
   
-  printf("List (Header-Position: %X)\n\n", (int) list);
+  printf("List (Header-Position: %p)\n\n", list);
   
   switch (list->type)
   {
@@ -393,7 +396,7 @@ void list_prettyPrint(struct List* list) {
     strncpy(stringCache, "", LIST_STRING_CACHE_SIZE);
   printf("  - A compare()-callback is %s defined.\n", stringCache);
   
-  printf("# First Element at: %X\n", (unsigned int) list->firstElement);
+  printf("# First Element at: %p\n", list->firstElement);
   
   puts("\n");
 }

@@ -19,6 +19,7 @@ int main() {
   
   printf("parser: List-Element at index 0: %d\n\n", (int) list_element(list, 0));  
   
+  list_prettyPrint(list);
   //list_setContent(list, 0, &b);
   
   list_insertBefore(list, 0, &b);

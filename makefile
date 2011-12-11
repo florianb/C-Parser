@@ -7,7 +7,7 @@ LDFLAGS =
 
 debug:
 	make clean
-	make parser && valgrind ./parser
+	make parser && clear && valgrind ./parser
 
 parser: $(OBJ)
 	$(CC) $(CCFLAGS) -o parser $(OBJ) $(LDFLAGS)
