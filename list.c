@@ -488,11 +488,6 @@ void list_prettyPrintElement(struct List* list, struct ListElement* given_elemen
   }
 }
 
-
-int list_sort() {
-  return 0;  
-}
-
 /**
   Vergleicht zwei Listenelemente miteinander
 */
@@ -724,6 +719,27 @@ int list_compareElements(struct List* list, int index_a, int index_b) {
     customCompare = list->compare;
     return (*customCompare) (a, b);
   }
+  return 0;
+}
+
+/**
+  Sortiert die Liste
+*/
+int list_sort(struct List* list) {
+  if (list->length > 1)
+  {
+    for (int i = 1; i < list->length; i++)
+    {
+      for (int j = 0; j < i; j++)
+      {
+        if (list_compareElements(list, j, i) == 1) {
+          list_insertBefore(list, j, list_element(list, i));
+          list_remove(list, i + 1);
+        }
+      }
+    }
+  }
+  return LIST_SUCCESS;
 }
 
 void list_prettyPrint(struct List* list) {

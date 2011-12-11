@@ -62,3 +62,4 @@ int list_setContent(struct List* list, int index, void* new_content);
 int list_insertBefore(struct List* list, int index, void* content);
 int list_insertAfter(struct List* list, int index, void* content);
 int list_remove(struct List* list, int index);
+int list_sort(struct List* list);

@@ -22,14 +22,17 @@ int main() {
   
   //list_insertBefore(list, 0, &a);
   
-  list_insertAfter(list, -1, "Added 1st.");
-  list_insertAfter(list, -1, "Added 2nd.");
-  list_insertAfter(list, -1, "Added 3rd.");
-  list_insertAfter(list, -1, "Added 4th.");
+  list_insertAfter(list, 0, "Added 1st.");
+  list_insertAfter(list, 0, "Added 2nd.");
+  list_insertAfter(list, 0, "Added 3rd.");
+  list_insertAfter(list, 0, "Added 4th.");
   list_prettyPrint(list);
-  list_setContent(list, -1, "Neuer Inhalt.");
-  list_remove(list, 0);
+  list_sort(list);
   list_prettyPrint(list);
+
+  //list_setContent(list, 1, "Neuer Inhalt.");
+  //list_remove(list, 0);
+  //list_prettyPrint(list);
   //list_setContent(list, 0, &b);
   
   //list_insertBefore(list, 0, &b);
