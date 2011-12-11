@@ -92,10 +92,28 @@ struct List* list_create(int type) {
   return newList;
 }
 
+
+int helper_modulo(int a, int b)
+{
+  int result = a;
+  if (a < 0)
+  {
+    result *= -1;
+  }
+  result = result % b;
+  if (a < 0)
+  {
+    result *= -1;
+  }
+  return result;
+}
+
 /**
   Gibt einen Zeiger auf das ListElement am angegebenen Index zurück
 */
 struct ListElement* list_elementInternal(struct List* list, int index) {
+  index = helper_modulo(index, list->length);
+  
   if (list->length == 0)
   {
     return (struct ListElement*) LIST_UNDEFINED;
@@ -241,21 +259,6 @@ int list_setContent(struct List* list, int index, void* new_content) {
   return LIST_SUCCESS;
 }
 
-int helper_modulo(int a, int b)
-{
-  int result = a;
-  if (a < 0)
-  {
-    result *= -1;
-  }
-  result = result % b;
-  if (a < 0)
-  {
-    result *= -1;
-  }
-  return result;
-}
-
 /**
   Fügt ein neues Element mit dem angegebenen Inhalt vor dem Element an dem gegebenen Index ein, das bestehende Element wir dnach hinten verschoben
 */
@@ -323,6 +326,30 @@ int list_insertAfter(struct List* list, int index, void* content) {
   return list_setContent(list, index, content);
 }
 
+int list_remove(struct List* list, int index) {
+  if (list->length > 0)
+  {
+    struct ListElement* element = list_elementInternal(list, index);
+    
+    if (list->firstElement == element)
+    {
+      list->firstElement = element->nextElement;
+    }
+    if (list->length > 1)
+    {
+      element->nextElement->previousElement = element->previousElement;
+      element->previousElement->nextElement = element->nextElement;
+    }
+    list_destroyElement(element);
+    list->length--;
+  }
+  else
+  {
+    return LIST_FAILURE;
+  }
+  return LIST_SUCCESS;
+}
+
 /**
   Gibt die Anzahl der enthaltenen Elemente zurück
 */
@@ -337,8 +364,8 @@ int list_type(struct List* list) {
   return list->type;
 }
 
-int list_append() {
-  return 0;
+int list_append(struct List* list, void* content) {
+  return list_insertAfter(list, -1, content);
 }
 
 int list_push() {
@@ -346,10 +373,6 @@ int list_push() {
 }
 
 int list_pop() {
-  return 0;  
-}
-
-int list_remove() {
   return 0;  
 }
 
@@ -435,11 +458,11 @@ void list_prettyPrintElement(struct List* list, struct ListElement* given_elemen
   }
   else
   {
-    printf("     - content:  %p\n\n", given_element->content);
+    printf("     - content:  %p\n", given_element->content);
     
     char contentString[LIST_STRING_SIZE] = "";
     list_elementContentToString(list, given_element, contentString, LIST_STRING_SIZE);
-    printf("     - toString: %s\n", contentString);
+    printf("     - toString: %s\n\n", contentString);
   }
 }
 

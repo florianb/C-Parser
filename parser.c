@@ -27,6 +27,9 @@ int main() {
   list_insertAfter(list, -1, "Added 3rd.");
   list_insertAfter(list, -1, "Added 4th.");
   list_prettyPrint(list);
+  list_setContent(list, -1, "Neuer Inhalt.");
+  list_remove(list, 0);
+  list_prettyPrint(list);
   //list_setContent(list, 0, &b);
   
   //list_insertBefore(list, 0, &b);
@@ -37,7 +40,7 @@ int main() {
   //printf("Value of &c: %s\n", list_element(list, 1));
   //printf("Value of &d: %s\n", list_element(list, 0));
   
-  list_prettyPrint(list);
+
   
   list_destroy(list);
   
