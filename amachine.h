@@ -6,19 +6,19 @@ enum AMCH_CONSTANTS {
 
 struct AMachineState {
   char* tokenBuffer;
+  unsigned int line;
+  unsigned int column;
   int currentChar;
   int previousChar;
   int currentNode;
-  unsigned int line;
-  unsigned int column;
   unsigned int tokenPosition;
   FILE* file;
 };
 
 struct AMachineToken {
-  char* token;
+  char* content;
   unsigned int line;
   unsigned int column;
 };
 
-void amch_run(struct List* list, FILE* file);
+void amch_run(struct List** list, FILE** file);

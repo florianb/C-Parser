@@ -69,7 +69,7 @@ struct List* list_create(int type) {
   else if (type > LIST_USER_DEFINED)
   {
     elementSize = type;
-    type = 0;
+    type = LIST_USER_DEFINED;
   }
   else
   {
@@ -85,12 +85,13 @@ struct List* list_create(int type) {
   newList->elementSize = elementSize;
   newList->length = 0;
   newList->type = type;
-  newList->toString = LIST_UNDEFINED;
-  newList->compare = LIST_UNDEFINED;
-  newList->setContent = LIST_UNDEFINED;
-  newList->destroyContent = LIST_UNDEFINED;
-  newList->firstElement = LIST_UNDEFINED;
+  newList->toString = NULL;
+  newList->compare = NULL;
+  newList->setContent = NULL;
+  newList->destroyContent = NULL;
+  newList->firstElement = NULL;
   
+  printf("\nCreated list %p, containing %d element/s..\n", newList, newList->length);
   return newList;
 }
 
@@ -204,7 +205,7 @@ int list_destroyElement(struct List* list, struct ListElement* element)
       (*customDestroyContent) (element);
     }
   }
-  puts("Freeing element..");
+  printf("Freeing element %p finally..\n", element);
   free(element);
   return LIST_SUCCESS;
 }
@@ -213,6 +214,7 @@ int list_destroyElement(struct List* list, struct ListElement* element)
   Gibt die komplette Liste mit allen enthaltenen Elementen frei
 */
 int list_destroy(struct List* list) {
+  printf("\nFreeing list %p, containing %d element/s..\n", list, list->length);
   if (list->length > 0)
   {
     struct ListElement* element;
@@ -222,11 +224,11 @@ int list_destroy(struct List* list) {
     {
       element = next_element;
       next_element = next_element->nextElement;
-      //printf("Freeing element %p.\n", element);
+      printf("The list must free the element %p.\n", element);
       list_destroyElement(list, element);
     }
   }
-  puts("Freeing list..");
+  printf("Freeing list %p finally..\n", list);
   free(list);
   return LIST_SUCCESS;
 }
@@ -245,10 +247,11 @@ int list_setContent(struct List* list, int index, void* new_content)
   
   if (list->setContent != LIST_UNDEFINED)
   {
-    puts("Running custom setContent().");
+    printf("Running custom setContent() for %p.\n", new_content);
     void* (*customSetContent) (void*);
     customSetContent = list->setContent;
     element->content = (*customSetContent) (new_content);
+    puts("Custom setContent() finished..");
   }
   else
   {
@@ -375,20 +378,6 @@ int list_remove(struct List* list, int index) {
     return LIST_FAILURE;
   }
   return LIST_SUCCESS;
-}
-
-/**
-  Gibt die Anzahl der enthaltenen Elemente zurück
-*/
-int list_length(struct List* list) {
-  return list->length;
-}
-
-/**
-  Gibt die Größe eine Elements zurück
-*/
-int list_type(struct List* list) {
-  return list->type;
 }
 
 /**

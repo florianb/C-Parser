@@ -28,7 +28,7 @@ int main() {
   //list = list_create(LIST_STRING);
   list = list_create(LIST_INT);
   
-  list_prettyPrint(list);
+  //list_prettyPrint(list);
   
   //list_insertBefore(list, 0, &a);
   
@@ -45,9 +45,9 @@ int main() {
   list_insertAfter(list, 0, &g);
   list_insertAfter(list, 0, &h);
   
-  list_prettyPrint(list);
+  //list_prettyPrint(list);
   list_sort(list);
-  list_prettyPrint(list);
+  //list_prettyPrint(list);
 
   //list_setContent(list, 1, "Neuer Inhalt.");
   //list_remove(list, 0);
@@ -65,12 +65,10 @@ int main() {
 
   
   list_destroy(list);
-  
-  list = list_create(LIST_INT);
-  
+    
   FILE* file = fopen("test/Test.c", "r");
-  amch_run(list, file);
-  
+  amch_run(&list, &file);
+  list_prettyPrint(list);
   list_destroy(list);
   return 0;
 }

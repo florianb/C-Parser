@@ -28,7 +28,7 @@ enum LIST_CONSTANTS {
   LIST_SUCCESS             = 1,
   
   LIST_UNDEFINED           = 0, /// Konstante für ungesetzte Zeiger
-  LIST_STRING_CACHE_SIZE   = 32, /// Größe eines Cache-Strings
+  LIST_STRING_CACHE_SIZE   = 256, /// Größe eines Cache-Strings
   LIST_STRING_SIZE         = 256 /// Größe eines regulären Strings
 };
 
@@ -49,10 +49,11 @@ struct List {
   unsigned int length; /// Anzahl der Listenelemente
   int type; /// Datentyp der Listenelemente - Wichtig, eine Liste ist immer homogen
   void* toString; /** Callback-Zeiger zu einer Funktion, welche das Element als String-Repräsentation
-                      zurückliefert */
-  void* compare; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht
-  void* setContent; /// Callback-Zeiger zu einer Funktion, die ein Element erstellt
-  void* destroyContent; /// Callback-Zeiger zu einer Funktion, die ein Element zerstört
+                      zurückliefert
+                      void (*customToString) (element*, destination_char*, max_int); */
+  void* compare; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht - int (*customCompare) (elementA*, elementB*);
+  void* setContent; /// Callback-Zeiger zu einer Funktion, die ein Element erstellt - content_in_list* (*customSetContent) (new_content*);
+  void* destroyContent; /// Callback-Zeiger zu einer Funktion, die ein Element zerstört - void (*customDestroyContent) (content*);
   struct ListElement* firstElement; // Zeiger auf das erste Listenelement
 };
 
