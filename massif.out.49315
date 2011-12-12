@@ -1,0 +1,1620 @@
+desc: --time-unit=B
+cmd: ./parser
+time_unit: B
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=104
+mem_heap_B=88
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=128
+mem_heap_B=96
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=744
+mem_heap_B=704
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=848
+mem_heap_B=792
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=888
+mem_heap_B=814
+mem_heap_extra_B=74
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=928
+mem_heap_B=846
+mem_heap_extra_B=82
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=952
+mem_heap_B=851
+mem_heap_extra_B=101
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1056
+mem_heap_B=939
+mem_heap_extra_B=117
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1192
+mem_heap_B=1065
+mem_heap_extra_B=127
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1065 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 784 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n2: 784 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 176 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 176 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 176 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 176 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 176 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 176 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 176 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 176 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 176 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 176 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 176 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 176 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 176 0xFFFFFFFE: ???
+ n1: 153 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 153 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 148 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 148 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 148 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 148 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 148 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 148 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 148 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 148 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 148 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 148 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 148 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 148 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 148 0xFFFFFFFE: ???
+   n0: 5 in 1 place, below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+ n1: 32 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 32 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 32 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 32 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 32 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 32 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 32 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 32 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 32 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 32 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 32 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 32 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 32 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 32 0xFFFFFFFE: ???
+ n0: 8 in 1 place, below massif's threshold (01.00%)
+#-----------
+snapshot=10
+#-----------
+time=1232
+mem_heap_B=1097
+mem_heap_extra_B=135
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1256
+mem_heap_B=1102
+mem_heap_extra_B=154
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1360
+mem_heap_B=1190
+mem_heap_extra_B=170
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1432
+mem_heap_B=1240
+mem_heap_extra_B=192
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1472
+mem_heap_B=1272
+mem_heap_extra_B=200
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=1496
+mem_heap_B=1279
+mem_heap_extra_B=217
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=1600
+mem_heap_B=1367
+mem_heap_extra_B=233
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=1640
+mem_heap_B=1393
+mem_heap_extra_B=247
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1680
+mem_heap_B=1425
+mem_heap_extra_B=255
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1720
+mem_heap_B=1452
+mem_heap_extra_B=268
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1452 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 960 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n2: 960 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 352 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 352 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 352 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 352 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 352 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 352 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 352 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 352 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 352 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 352 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 352 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 352 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 352 0xFFFFFFFE: ???
+ n1: 268 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 268 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 224 0xFFFFFFFE: ???
+   n1: 44 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 44 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 44 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 44 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 44 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 44 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 44 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 44 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 44 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 44 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 44 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 44 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 44 0xFFFFFFFE: ???
+ n1: 128 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 128 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 128 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 128 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 128 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 128 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 128 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 128 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 128 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 128 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 128 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 128 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 128 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 128 0xFFFFFFFE: ???
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+ n0: 8 in 1 place, below massif's threshold (01.00%)
+#-----------
+snapshot=20
+#-----------
+time=1824
+mem_heap_B=1540
+mem_heap_extra_B=284
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1864
+mem_heap_B=1569
+mem_heap_extra_B=295
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1904
+mem_heap_B=1601
+mem_heap_extra_B=303
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1928
+mem_heap_B=1615
+mem_heap_extra_B=313
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=2032
+mem_heap_B=1703
+mem_heap_extra_B=329
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=2056
+mem_heap_B=1713
+mem_heap_extra_B=343
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=2096
+mem_heap_B=1745
+mem_heap_extra_B=351
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=2136
+mem_heap_B=1769
+mem_heap_extra_B=367
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=2240
+mem_heap_B=1857
+mem_heap_extra_B=383
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=2264
+mem_heap_B=1869
+mem_heap_extra_B=395
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1869 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1224 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n2: 1224 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+ n1: 357 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 357 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 82 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 82 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 82 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 82 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 82 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 82 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 82 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 82 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 82 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 82 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 82 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 82 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 82 0xFFFFFFFE: ???
+ n1: 192 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 192 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 192 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 192 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 192 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 192 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 192 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 192 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 192 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 192 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 192 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 192 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 192 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 192 0xFFFFFFFE: ???
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+ n0: 8 in 1 place, below massif's threshold (01.00%)
+#-----------
+snapshot=30
+#-----------
+time=2304
+mem_heap_B=1901
+mem_heap_extra_B=403
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=2328
+mem_heap_B=1906
+mem_heap_extra_B=422
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2480
+mem_heap_B=2042
+mem_heap_extra_B=438
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=6584
+mem_heap_B=6138
+mem_heap_extra_B=446
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=6656
+mem_heap_B=6194
+mem_heap_extra_B=462
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=6696
+mem_heap_B=6218
+mem_heap_extra_B=478
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=6720
+mem_heap_B=6222
+mem_heap_extra_B=498
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=6760
+mem_heap_B=6246
+mem_heap_extra_B=514
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=6784
+mem_heap_B=6250
+mem_heap_extra_B=534
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=6824
+mem_heap_B=6274
+mem_heap_extra_B=550
+mem_stacks_B=0
+heap_tree=detailed
+n7: 6274 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+ n1: 72 0x100001865: list_createElement (in ./parser)
+  n1: 72 0x100001D51: list_insertAfter (in ./parser)
+   n0: 72 in 3 places, all below massif's threshold (01.00%)
+ n0: 72 in 3 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=40
+#-----------
+time=6848
+mem_heap_B=6278
+mem_heap_extra_B=570
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=6888
+mem_heap_B=6302
+mem_heap_extra_B=586
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=6912
+mem_heap_B=6306
+mem_heap_extra_B=606
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=6952
+mem_heap_B=6330
+mem_heap_extra_B=622
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=6976
+mem_heap_B=6334
+mem_heap_extra_B=642
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=7016
+mem_heap_B=6358
+mem_heap_extra_B=658
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=7040
+mem_heap_B=6362
+mem_heap_extra_B=678
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=7080
+mem_heap_B=6386
+mem_heap_extra_B=694
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=7104
+mem_heap_B=6390
+mem_heap_extra_B=714
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=7144
+mem_heap_B=6414
+mem_heap_extra_B=730
+mem_stacks_B=0
+heap_tree=detailed
+n7: 6414 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n1: 192 0x100001865: list_createElement (in ./parser)
+  n1: 192 0x100001D51: list_insertAfter (in ./parser)
+   n0: 192 in 8 places, all below massif's threshold (01.00%)
+ n0: 92 in 3 places, all below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+#-----------
+snapshot=50
+#-----------
+time=7168
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=7208
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=7232
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=7232
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=peak
+n7: 6446 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n2: 216 0x100001865: list_createElement (in ./parser)
+  n1: 192 0x100001D51: list_insertAfter (in ./parser)
+   n0: 192 in 8 places, all below massif's threshold (01.00%)
+  n0: 24 in 1 place, below massif's threshold (01.00%)
+ n0: 100 in 3 places, all below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+#-----------
+snapshot=54
+#-----------
+time=7256
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=7296
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=7336
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=7360
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=7384
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=7424
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=7464
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=7488
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=7512
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=7552
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=detailed
+n7: 6418 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n2: 192 0x100001865: list_createElement (in ./parser)
+  n1: 120 0x100001D51: list_insertAfter (in ./parser)
+   n0: 120 in 8 places, all below massif's threshold (01.00%)
+  n1: 72 0x100001C36: list_insertBefore (in ./parser)
+   n1: 72 0x100002E0D: list_sort (in ./parser)
+    n0: 72 0x100001292: main (in ./parser)
+ n0: 96 in 3 places, all below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+#-----------
+snapshot=64
+#-----------
+time=7592
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=7616
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=7640
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=7680
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=7720
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=7744
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=7768
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=7808
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=7848
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=7872
+mem_heap_B=6446
+mem_heap_extra_B=786
+mem_stacks_B=0
+heap_tree=detailed
+n7: 6446 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n2: 216 0x100001865: list_createElement (in ./parser)
+  n1: 144 0x100001C36: list_insertBefore (in ./parser)
+   n1: 144 0x100002E0D: list_sort (in ./parser)
+    n0: 144 0x100001292: main (in ./parser)
+  n1: 72 0x100001D51: list_insertAfter (in ./parser)
+   n0: 72 in 8 places, all below massif's threshold (01.00%)
+ n0: 100 in 3 places, all below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+#-----------
+snapshot=74
+#-----------
+time=7896
+mem_heap_B=6442
+mem_heap_extra_B=766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=7936
+mem_heap_B=6418
+mem_heap_extra_B=750
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=7960
+mem_heap_B=6414
+mem_heap_extra_B=730
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=8000
+mem_heap_B=6390
+mem_heap_extra_B=714
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=8024
+mem_heap_B=6386
+mem_heap_extra_B=694
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=8064
+mem_heap_B=6362
+mem_heap_extra_B=678
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=8088
+mem_heap_B=6358
+mem_heap_extra_B=658
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=8128
+mem_heap_B=6334
+mem_heap_extra_B=642
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=8152
+mem_heap_B=6330
+mem_heap_extra_B=622
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=8192
+mem_heap_B=6306
+mem_heap_extra_B=606
+mem_stacks_B=0
+heap_tree=detailed
+n7: 6306 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4096 0x1783F6: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+  n1: 4096 0x16ED18: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+   n1: 4096 0x1A4D2C: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+    n1: 4096 0x13EE2D: puts (in /usr/lib/system/libsystem_c.dylib)
+     n0: 4096 0x100001153: main (in ./parser)
+ n1: 1360 0x310AA9: _xpc_calloc (in /usr/lib/system/libxpc.dylib)
+  n3: 1360 0x311383: _xpc_base_create (in /usr/lib/system/libxpc.dylib)
+   n1: 616 0x317CE1: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 616 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 616 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 616 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 616 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 616 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 616 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 616 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 616 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 616 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 616 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 616 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 616 0xFFFFFFFE: ???
+   n1: 608 0x3170D1: xpc_dictionary_create (in /usr/lib/system/libxpc.dylib)
+    n1: 608 0x318F1F: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 608 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 608 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 608 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 608 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 608 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 608 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 608 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 608 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 608 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 608 0xFFFFFFFE: ???
+   n1: 136 0x31ACEE: _xpc_domain_create (in /usr/lib/system/libxpc.dylib)
+    n1: 136 0x318FDA: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 136 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 136 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 136 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 136 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 136 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 136 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 136 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 136 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 136 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 136 0xFFFFFFFE: ???
+ n1: 362 0x16B357: strdup (in /usr/lib/system/libsystem_c.dylib)
+  n2: 362 0x3109B1: _xpc_strdup (in /usr/lib/system/libxpc.dylib)
+   n1: 275 0x317CEC: xpc_string_create (in /usr/lib/system/libxpc.dylib)
+    n1: 275 0x316EF4: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 275 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 275 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 275 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 275 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 275 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 275 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 275 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 275 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 275 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 275 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 275 0xFFFFFFFE: ???
+   n1: 87 0x316DC6: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+    n1: 87 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+     n1: 87 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+      n1: 87 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+       n1: 87 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 87 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+         n1: 87 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 87 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 87 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+            n1: 87 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+             n1: 87 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+              n1: 87 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+               n0: 87 0xFFFFFFFE: ???
+ n1: 224 0x310AEC: _xpc_malloc (in /usr/lib/system/libxpc.dylib)
+  n1: 224 0x316DAB: _xpc_dictionary_insert (in /usr/lib/system/libxpc.dylib)
+   n1: 224 0x316F05: xpc_dictionary_set_string (in /usr/lib/system/libxpc.dylib)
+    n1: 224 0x318F48: _libxpc_initializer (in /usr/lib/system/libxpc.dylib)
+     n1: 224 0x16E7C: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+      n1: 224 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 224 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+        n1: 224 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 224 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 224 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+           n1: 224 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+            n1: 224 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+             n1: 224 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+              n0: 224 0xFFFFFFFE: ???
+ n2: 96 0x100001865: list_createElement (in ./parser)
+  n1: 72 0x100001C36: list_insertBefore (in ./parser)
+   n1: 72 0x100002E0D: list_sort (in ./parser)
+    n0: 72 0x100001292: main (in ./parser)
+  n0: 24 in 1 place, below massif's threshold (01.00%)
+ n1: 88 0xF39AF: get_or_create_key_element (in /usr/lib/system/libkeymgr.dylib)
+  n1: 88 0xF3BC8: _keymgr_get_and_lock_processwide_ptr_2 (in /usr/lib/system/libkeymgr.dylib)
+   n1: 88 0xF3C35: __keymgr_initializer (in /usr/lib/system/libkeymgr.dylib)
+    n1: 88 0x16E6D: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+     n1: 88 0x7FFF5FC0FD18: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+      n1: 88 0x7FFF5FC0FA64: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+       n1: 88 0x7FFF5FC0D256: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+        n1: 88 0x7FFF5FC0D1EF: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+         n1: 88 0x7FFF5FC0E029: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+          n1: 88 0x7FFF5FC03486: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+           n1: 88 0x7FFF5FC0757E: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**) (in /usr/lib/dyld)
+            n1: 88 0x7FFF5FC01057: _dyld_start (in /usr/lib/dyld)
+             n0: 88 0xFFFFFFFE: ???
+ n0: 80 in 3 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=84
+#-----------
+time=8216
+mem_heap_B=6302
+mem_heap_extra_B=586
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=85
+#-----------
+time=8256
+mem_heap_B=6278
+mem_heap_extra_B=570
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=86
+#-----------
+time=8280
+mem_heap_B=6274
+mem_heap_extra_B=550
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=87
+#-----------
+time=8320
+mem_heap_B=6250
+mem_heap_extra_B=534
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=88
+#-----------
+time=8344
+mem_heap_B=6246
+mem_heap_extra_B=514
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=89
+#-----------
+time=8384
+mem_heap_B=6222
+mem_heap_extra_B=498
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=90
+#-----------
+time=8408
+mem_heap_B=6218
+mem_heap_extra_B=478
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=91
+#-----------
+time=8448
+mem_heap_B=6194
+mem_heap_extra_B=462
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=92
+#-----------
+time=8520
+mem_heap_B=6138
+mem_heap_extra_B=446
+mem_stacks_B=0
+heap_tree=empty

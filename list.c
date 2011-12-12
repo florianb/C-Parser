@@ -187,21 +187,24 @@ struct ListElement* list_createElement()
 /**
   Gibt das Element mit dem enthaltenen Inhalt frei
 */
-int list_destroyElement(struct ListElement* element)
+int list_destroyElement(struct List* list, struct ListElement* element)
 {
   if (element->content != LIST_UNDEFINED)
   {
-    if (element->destroyContent == LIST_UNDEFINED)
+    if (list->destroyContent == LIST_UNDEFINED)
     {
+      puts("Freeing standard-content..");
       free(element->content);
     }
     else
     {
+      puts("Freeing by custom destroyContent().");
       void (*customDestroyContent) (void*);
       customDestroyContent = list->destroyContent;
       (*customDestroyContent) (element);
     }
   }
+  puts("Freeing element..");
   free(element);
   return LIST_SUCCESS;
 }
@@ -220,9 +223,10 @@ int list_destroy(struct List* list) {
       element = next_element;
       next_element = next_element->nextElement;
       //printf("Freeing element %p.\n", element);
-      list_destroyElement(element);
+      list_destroyElement(list, element);
     }
   }
+  puts("Freeing list..");
   free(list);
   return LIST_SUCCESS;
 }
@@ -230,38 +234,42 @@ int list_destroy(struct List* list) {
 /**
   Setzt den Inhalt eines Elements mit dem angegebenen Content, der Typ wird durch die Liste erkannt
 */
-int list_setContent(struct List* list, int index, void* new_content) {
+int list_setContent(struct List* list, int index, void* new_content)
+{
+  
+  if (list->length == 0)
+  {
+    return LIST_FAILURE;
+  }
+  struct ListElement* element = list_elementInternal(list, index);
+  
   if (list->setContent != LIST_UNDEFINED)
   {
-    if (list->length == 0)
-    {
-      return LIST_FAILURE;
-    }
-  
-    struct ListElement* element = list_elementInternal(list, index);
-  
+    puts("Running custom setContent().");
+    void* (*customSetContent) (void*);
+    customSetContent = list->setContent;
+    element->content = (*customSetContent) (new_content);
+  }
+  else
+  {
+    
+
     //printf("Overwriting content probably at %p\n", element->content);
-  
+
     int size = list->elementSize;
     if (list->type == LIST_STRING)
       size = strlen(new_content) + 1;
-  
+
     //printf("Preparing to write %d bytes.\n", size); 
-    if (list->setContent != LIST_UNDEFINED)
-    {
-      void* (*customSetContent) (void*);
-      customSetContent = list->setContent;
-      element->content = (*customSetContent) (new_content);
-      return LIST_SUCCESS;
-    }
-    if (element->content == LIST_UNDEFINED || list->type == LIST_STRING)
+
+    else if (element->content == LIST_UNDEFINED || list->type == LIST_STRING)
     {
       if (list->type == LIST_STRING)
       {
         free(element->content);
         //puts("Freed string-content.");
       }
-    
+  
       element->content = malloc(size);
       if (element->content == NULL) {
         puts("list_setContent:2: Fehler, Speicher konnte nicht reserviert werden.");
@@ -359,7 +367,7 @@ int list_remove(struct List* list, int index) {
       element->nextElement->previousElement = element->previousElement;
       element->previousElement->nextElement = element->nextElement;
     }
-    list_destroyElement(element);
+    list_destroyElement(list, element);
     list->length--;
   }
   else

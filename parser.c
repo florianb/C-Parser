@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "list.h"
+#include "amachine.h"
 
 int main() {
   puts("\nparser 0.01 - 2011 by florianbreisch@b-lebt.de\n\n");
@@ -65,7 +66,11 @@ int main() {
   
   list_destroy(list);
   
+  list = list_create(LIST_INT);
+  
   FILE* file = fopen("test/Test.c", "r");
-  fclose(file);
+  amch_run(list, file);
+  
+  list_destroy(list);
   return 0;
 }
