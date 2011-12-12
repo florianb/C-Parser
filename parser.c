@@ -65,7 +65,7 @@ int main() {
   
   list_destroy(list);
   
-  
-  puts("Hallo Welt.\n");
+  FILE* file = fopen("test/Test.c", "r");
+  fclose(file);
   return 0;
 }
