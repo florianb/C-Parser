@@ -1,5 +1,5 @@
 enum AMCH_CONSTANTS {
-  AMCH_OFF = 0;
+  AMCH_OFF = 0
 };
 
 struct AMachineState {

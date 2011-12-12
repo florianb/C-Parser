@@ -87,6 +87,8 @@ struct List* list_create(int type) {
   newList->type = type;
   newList->toString = LIST_UNDEFINED;
   newList->compare = LIST_UNDEFINED;
+  newList->setContent = LIST_UNDEFINED;
+  newList->destroyContent = LIST_UNDEFINED;
   newList->firstElement = LIST_UNDEFINED;
   
   return newList;
@@ -187,13 +189,18 @@ struct ListElement* list_createElement()
 */
 int list_destroyElement(struct ListElement* element)
 {
-  puts("Destroying element:");
-  //list_prettyPrintElement(element);
-  
   if (element->content != LIST_UNDEFINED)
   {
-    //puts("Destroyed element-content.");
-    free(element->content);
+    if (element->destroyContent == LIST_UNDEFINED)
+    {
+      free(element->content);
+    }
+    else
+    {
+      void (*customDestroyContent) (void*);
+      customDestroyContent = list->destroyContent;
+      (*customDestroyContent) (element);
+    }
   }
   free(element);
   return LIST_SUCCESS;
@@ -224,38 +231,47 @@ int list_destroy(struct List* list) {
   Setzt den Inhalt eines Elements mit dem angegebenen Content, der Typ wird durch die Liste erkannt
 */
 int list_setContent(struct List* list, int index, void* new_content) {
-  if (list->length == 0)
+  if (list->setContent != LIST_UNDEFINED)
   {
-    return LIST_FAILURE;
-  }
-  
-  struct ListElement* element = list_elementInternal(list, index);
-  
-  //printf("Overwriting content probably at %p\n", element->content);
-  
-  int size = list->elementSize;
-  if (list->type == LIST_STRING)
-    size = strlen(new_content) + 1;
-  
-  //printf("Preparing to write %d bytes.\n", size);  
-  if (element->content == LIST_UNDEFINED || list->type == LIST_STRING)
-  {
-    if (list->type == LIST_STRING)
+    if (list->length == 0)
     {
-      free(element->content);
-      //puts("Freed string-content.");
+      return LIST_FAILURE;
     }
-    
-    element->content = malloc(size);
-    if (element->content == NULL) {
-      puts("list_setContent:2: Fehler, Speicher konnte nicht reserviert werden.");
-      exit(2);
-    }
-    //puts("Allocated memory for content.");
-  }
-  //printf("Copying content to %p\n", element->content);
-  memcpy(element->content, new_content, size);
   
+    struct ListElement* element = list_elementInternal(list, index);
+  
+    //printf("Overwriting content probably at %p\n", element->content);
+  
+    int size = list->elementSize;
+    if (list->type == LIST_STRING)
+      size = strlen(new_content) + 1;
+  
+    //printf("Preparing to write %d bytes.\n", size); 
+    if (list->setContent != LIST_UNDEFINED)
+    {
+      void* (*customSetContent) (void*);
+      customSetContent = list->setContent;
+      element->content = (*customSetContent) (new_content);
+      return LIST_SUCCESS;
+    }
+    if (element->content == LIST_UNDEFINED || list->type == LIST_STRING)
+    {
+      if (list->type == LIST_STRING)
+      {
+        free(element->content);
+        //puts("Freed string-content.");
+      }
+    
+      element->content = malloc(size);
+      if (element->content == NULL) {
+        puts("list_setContent:2: Fehler, Speicher konnte nicht reserviert werden.");
+        exit(2);
+      }
+      //puts("Allocated memory for content.");
+    } 
+    //printf("Copying content to %p\n", element->content);
+    memcpy(element->content, new_content, size);
+  }
   return LIST_SUCCESS;
 }
 
@@ -481,7 +497,6 @@ void list_prettyPrintElement(struct List* list, struct ListElement* given_elemen
   else
   {
     printf("     - content:  %p\n", given_element->content);
-    
     char contentString[LIST_STRING_SIZE] = "";
     list_elementContentToString(list, given_element, contentString, LIST_STRING_SIZE);
     printf("     - toString: %s\n\n", contentString);

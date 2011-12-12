@@ -51,6 +51,8 @@ struct List {
   void* toString; /** Callback-Zeiger zu einer Funktion, welche das Element als String-Repräsentation
                       zurückliefert */
   void* compare; /// Callback-Zeiger zu einer Funktion, die zwei Elemente miteinander vergleicht
+  void* setContent; /// Callback-Zeiger zu einer Funktion, die ein Element erstellt
+  void* destroyContent; /// Callback-Zeiger zu einer Funktion, die ein Element zerstört
   struct ListElement* firstElement; // Zeiger auf das erste Listenelement
 };
 
