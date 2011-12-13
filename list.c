@@ -66,7 +66,7 @@ struct List* list_create(int type) {
         break;
     }
   }
-  else if (type > LIST_USER_DEFINED)
+  else if (type >= LIST_USER_DEFINED)
   {
     elementSize = type;
     type = LIST_USER_DEFINED;

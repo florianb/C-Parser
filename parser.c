@@ -26,15 +26,17 @@ struct XRefReference {
 */
 struct XRefHead* xref_create(struct AMachineToken* token)
 {
-  struct XRefHead* head = malloc(sizeof(struct XRefHead) + sizeof(struct XRefReference) +
-                                  strlen(token->content) + 1);
+  int size =  sizeof(struct XRefHead) +
+              sizeof(struct XRefReference) +
+              strlen(token->content) + 1;
+  struct XRefHead* head = malloc(size);
   head->token = ((char*) &head[1]);
   head->references = 1;
   strcpy(head->token, token->content);
-  head->token[strlen(token->content)] = '\0';
-  struct XRefReference reference = {token->line, token->column};
-  memcpy((void*) head->token[strlen(token->content) + 2], &reference,
-          sizeof(struct XRefReference));
+  printf("XRef: %p (Size: %d bytes, Token at %p with %lu bytes)\n", head, size, head->token, strlen(head->token));
+  memcpy((void*) head->token[strlen(head->token)],
+         (void*) token->content[strlen(head->token)],
+         sizeof(struct XRefReference));
   return head;
 }
 
@@ -44,18 +46,25 @@ struct XRefHead* xref_create(struct AMachineToken* token)
 struct XRefHead* xref_addReference(struct XRefHead* head, struct AMachineToken* token)
 {
   head->references++;
-  head = realloc(head, sizeof(struct XRefHead) + (sizeof(struct XRefReference) *
-                  head->references) + strlen(head->token) + 1);
+  int size =  sizeof(struct XRefHead) +
+              (sizeof(struct XRefReference) * head->references) +
+              strlen(head->token) + 1;
+  printf("O-XRef: %p (Size: %d bytes, Token at %p with %lu bytes)\n", head, size, head->token, strlen(head->token));
+
+  head = realloc(head, size);
   struct XRefReference reference = {token->line, token->column};
-  memcpy((void*) head->token[strlen(token->content) + 2 + (sizeof(struct XRefReference) *
-          head->references)], &reference, sizeof(struct XRefReference));
+  printf("R-XRef: %p (Size: %d bytes, Token at %p with %lu bytes)\n", head, size, head->token, strlen(head->token));
+  memcpy( (void*) head->token[strlen(head->token) +
+          ((head->references - 1) * sizeof(struct XRefReference))],
+          (void*) &token->line,
+          sizeof(struct XRefReference));
   return head;
 }
 
 /**
   Gibt ein Element einer Xref-Liste in einen String aus
 */
-void xref_toString(struct XRefHead* head, char* destination)
+void xref_toString(struct XRefHead* head, char* destination, int max)
 {
   sprintf(destination, "(%s", head->token);
   struct XRefReference* reference;
@@ -71,6 +80,28 @@ void xref_toString(struct XRefHead* head, char* destination)
   sprintf(&destination[strlen(destination)], ")\n");
 }
 
+void amch_token_toString(struct AMachineToken* token, char* destination, int max);
+
+/**
+  Callback-Funktion um ein XRef-Element innerhalb einer Liste zu entfernen
+*/
+void xref_destroyContent(struct XRefHead* head)
+{
+  free(head);
+}
+
+/**
+  Callback-Funktion um ein Token in die Liste zu kopieren
+*/
+struct XRefHead* xref_setContent(struct XRefHead* head)
+{
+  int size = sizeof(struct XRefHead) + (sizeof(struct XRefReference) *
+                                    head->references) + strlen(head->token) + 1;
+  struct XRefHead* new_head = malloc(size);
+  memcpy(new_head, head, size);
+  return new_head;
+}
+
 int main() {
   char test[512] = "";
   puts("\nparser 0.01 - 2011 by florianbreisch@b-lebt.de\n\n");
@@ -79,7 +110,7 @@ int main() {
   struct List* list;
   struct List* list2;
   
-  FILE* file = fopen("test/gcc.c", "r");
+  FILE* file = fopen("test/Test.c", "r");
   amch_run(&list, &file); // Startet den Automaten
   //list_prettyPrint(list);
   
@@ -108,9 +139,31 @@ int main() {
   
   list_sort(list2);
   
-  for (int i = 0; i < list2->length; i++)
+  list_destroy(list);
+  list = list_create(LIST_USER_DEFINED);
+  list->setContent = &xref_setContent;
+  list->destroyContent = &xref_destroyContent;
+  list->toString = &xref_toString;
+  
+  list_insertAfter(list, 0, xref_create(list_element(list2, 0)));
+  
+  for (int i = 1; i < list2->length; i++)
   {
     list_toString(list2, i, test, 511);
+    
+    if (
+    strcmp(
+      ((struct XRefHead*) list_element(list, -1))->token,
+      ((struct AMachineToken*) list_element(list2, i))->content) == 0)
+    {
+      list_setContent(list, -1, xref_addReference(
+            (struct XRefHead*) list_element(list, -1),
+            (struct AMachineToken*) list_element(list2, i)));
+    }
+    else
+    {
+      list_insertAfter(list, -1, xref_create(list_element(list2, i)));
+    }
     printf("%s\n", test);
   }
   
