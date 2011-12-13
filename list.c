@@ -95,7 +95,9 @@ struct List* list_create(int type) {
   return newList;
 }
 
-
+/**
+  Hilfsfunktion zur Berschnung des korrekten Restwertes aus vorzeichenbehafteten Ints
+*/
 int helper_modulo(int a, int b)
 {
   int result = a;
@@ -413,7 +415,12 @@ int list_pop(struct List* list, void* content) {
   return LIST_SUCCESS;
 }
 
-void list_elementContentToString(struct List* list, struct ListElement* element, char* destination, int max) {
+/**
+  Kopiert die String-Repräsentation des Inhaltes eines internen Elementes
+  in den ang. String
+*/
+void list_elementContentToString(struct List* list, struct ListElement* element,
+                                  char* destination, int max) {
   void* content = element->content;
   
   if (list->type != LIST_USER_DEFINED && list->toString == LIST_UNDEFINED)
@@ -481,10 +488,16 @@ void list_elementContentToString(struct List* list, struct ListElement* element,
   }
 }
 
+/**
+  Kopiert die String-Repräsentation eines Element-Inhaltes in den angegebenen String
+*/
 void list_toString(struct List* list, int index, char* destination, int max) {
   list_elementContentToString(list, list_elementInternal(list, index), destination, max);
 }
 
+/**
+  Gibt den Inhalt einer Liste lesbar auf dem Bildschirm aus
+*/
 void list_prettyPrintElement(struct List* list, struct ListElement* given_element) {
   printf("  # Element %p\n", given_element);
   printf("     - next:     %p\n", given_element->nextElement);

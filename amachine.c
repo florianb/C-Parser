@@ -106,12 +106,18 @@ void amch_chargeTokenBuffer(struct AMachineState* machine, char nextChar)
   machine->tokenPosition = tokenSize;
 }
 
+/**
+  Callback-Funktion zur Stringrepräsentation eines Tokens innerhalb der Liste
+*/
 void amch_token_toString(struct AMachineToken* token, char* destination, int max)
 {
   //struct AMachineToken* token = element->content;
   snprintf(destination, max, "(\"%s\", %d, %d)\n", token->content, token->line, token->column);
 }
 
+/**
+  Callback-Funktion um ein Token in die Liste zu kopieren
+*/
 struct AMachineToken* amch_token_setContent(struct AMachineToken* token)
 {
   struct AMachineToken* new_token;
@@ -144,17 +150,26 @@ struct AMachineToken* amch_token_setContent(struct AMachineToken* token)
   return new_token;
 }
 
+/**
+  Callback-Funktion um Ein token innerhalb einer Liste zu entfernen
+*/
 void amch_token_destroyContent(struct AMachineToken* token)
 {
   //printf("Freeing custom content at %p..\n", token);
   free(token);
 }
 
+/**
+  Callback-Funktion um zwei Tokens lexikograpghisch in der Liste zu vergleichen
+*/
 int amch_token_compare(struct AMachineToken* token_a, struct AMachineToken* token_b)
 {
   return strcmp(token_a->content, token_b->content);
 }
 
+/**
+  Erstellt einen leeren Token
+*/
 struct AMachineToken* amch_token_create()
 {
   struct AMachineToken* token = malloc(sizeof(struct AMachineToken) + 1);
@@ -168,18 +183,26 @@ struct AMachineToken* amch_token_create()
   return token;
 }
 
+/**
+  Schließt die Erfassung eines Tokens ab und speichert ihn in der Liste
+*/
 void amch_finishToken(struct AMachineState* machine)
 {
-  //printf("Creating list element #%d (token->content: \"%s\", length: %lu)\n", machine->list->length, machine->tokenBuffer, strlen(machine->tokenBuffer));
   list_insertAfter(machine->list, -1, (struct AMachineToken*) machine);
   amch_resetTokenBuffer(machine);
 }
 
+/**
+  Dummy-Knoten für den Automaten-Graphen
+*/
 int amch_000(struct AMachineState* machine)
 {
   return AMCH_OFF;
 }
 
+/**
+  Haupt-Knoten des Automaten-Graphen
+*/
 int amch_100(struct AMachineState* machine)
 {
   if (machine->currentChar == ' ' ||
@@ -225,6 +248,9 @@ int amch_100(struct AMachineState* machine)
   return 100;
 }
 
+/**
+  Automaten-Knoten 200: Fortführende Erkennung von Strings
+*/
 int amch_200(struct AMachineState* machine)
 {
   if (
@@ -241,6 +267,9 @@ int amch_200(struct AMachineState* machine)
   return 10;
 }
 
+/**
+  Automaten-Knoten 300: Fortführende Erkennung von Zahlen
+*/
 int amch_300(struct AMachineState* machine)
 {
   if (
@@ -259,6 +288,9 @@ int amch_300(struct AMachineState* machine)
   return 10;
 }
 
+/**
+  Automaten-Knoten 301: Ende der Erkennung von Zahlen
+*/
 int amch_301(struct AMachineState* machine)
 {
   if (
@@ -272,6 +304,9 @@ int amch_301(struct AMachineState* machine)
   return 10;
 }
 
+/**
+  Automaten-Knoten 400: Fortführende Erkennung von Kommentaren
+*/
 int amch_400(struct AMachineState* machine)
 {
   if (machine->currentChar == '/')
@@ -283,11 +318,13 @@ int amch_400(struct AMachineState* machine)
     return 411;
   }
   amch_chargeTokenBuffer(machine, machine->previousChar);
-  //machine->tokenColumn--;
   amch_finishToken(machine);
   return 10;
 }
 
+/**
+  Automaten-Knoten 401: Beendigung der Erkennung von 1-Zeilen-Kommentaren
+*/
 int amch_401(struct AMachineState* machine)
 {
   if (machine->currentChar != '\n')
@@ -297,6 +334,9 @@ int amch_401(struct AMachineState* machine)
   return 100;
 }
 
+/**
+  Automaten-Knoten 411: Fortführende Erkennung von Mehrzeilen-Kommentaren
+*/
 int amch_411(struct AMachineState* machine)
 {
   if (machine->currentChar != '*')
@@ -306,6 +346,9 @@ int amch_411(struct AMachineState* machine)
   return 412;
 }
 
+/**
+  Automaten-Knoten 412: Beendigung der Erkennung von Mehrzeilen-Kommentaren
+*/
 int amch_412(struct AMachineState* machine)
 {
   if (machine->currentChar != '/')
@@ -315,6 +358,11 @@ int amch_412(struct AMachineState* machine)
   return 100;
 }
 
+/**
+  Startet Automaten mit der angegebenen Liste und der angegebenen Datei
+  
+  Die Datei muss bereits zum lesen geöffnet sein.
+*/
 void amch_run(struct List** list_ptr, FILE** file_ptr)
 {
   struct List* list = *list_ptr;
@@ -336,12 +384,14 @@ void amch_run(struct List** list_ptr, FILE** file_ptr)
   while (feof(machine->file) == 0 && nextStep > 0)
   {
     if (nextStep >= 100)
+    {
       amch_readChar(machine);
+    }
     else
+    {
       nextStep *= 10;
-    
-    //printf("Examining %c at node %d\n", machine->currentChar, nextStep);
-    
+    }
+      
     switch (nextStep)
     {
       case 100:
@@ -377,5 +427,4 @@ void amch_run(struct List** list_ptr, FILE** file_ptr)
   }
   
   amch_destroy(machine);
-  //puts("Machine killed.");
 }
