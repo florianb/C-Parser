@@ -9,7 +9,7 @@
 /**
   Initialisiert den Automaten
 */
-void amch_initialize(struct AMachineState* machine, FILE* file)
+void amch_initialize(struct AMachineState* machine, struct List* list, FILE* file)
 {
   //machine->tokenBuffer = malloc(AMCH_TOKEN_BUFFER_SIZE);
   /*for (int i = 0; i < AMCH_TOKEN_BUFFER_SIZE; i++)
@@ -21,11 +21,14 @@ void amch_initialize(struct AMachineState* machine, FILE* file)
   *(machine->tokenBuffer) = '\0';
   machine->currentChar = -2;
   machine->previousChar = -2;
-  machine->currentNode = AMCH_OFF;
   machine->line = 1;
   machine->column = 1;
+  machine->tokenLine = 1;
+  machine->tokenColumn = 1;
+  machine->ignoreComments = 0;
   machine->tokenPosition = 0;
   machine->file = file;
+  machine->list = list;
   rewind(machine->file);
   puts("Abstract machine initialized..");
 }
@@ -42,10 +45,25 @@ void amch_destroy(struct AMachineState* machine)
 }
 
 /**
+  Aktualisiert Spalten und Zeilenangaben
+*/
+void amch_updatePosition(struct AMachineState* machine)
+{
+  if (machine->currentChar == '\n')
+  {
+    printf("Zeile %d nach %d Zeichen abgeschlossen.\n", machine->line, machine->column);
+    machine->line++;
+    machine->column = 0;
+  }
+  machine->column++;
+}
+
+/**
   Liest ein einzelnes Zeichen aus der Datei ein
 */
 void amch_readChar(struct AMachineState* machine)
 {
+  amch_updatePosition(machine);
   machine->previousChar = machine->currentChar;
   machine->currentChar = fgetc(machine->file);
 }
@@ -88,30 +106,16 @@ void amch_chargeTokenBuffer(struct AMachineState* machine, char nextChar)
   machine->tokenPosition = tokenSize;
 }
 
-/**
-  Aktualisiert Spalten und Zeilenangaben
-*/
-void amch_updatePosition(struct AMachineState* machine)
-{
-  if (machine->currentChar == '\n')
-  {
-    printf("Zeile %d nach %d Zeichen abgeschlossen.\n", machine->line, machine->column);
-    machine->line++;
-    machine->column = 0;
-  }
-  machine->column++;
-}
-
 void amch_token_toString(struct AMachineToken* token, char* destination, int max)
 {
   //struct AMachineToken* token = element->content;
-  snprintf(destination, max, "(%s, %d, %d)\n", token->content, token->line, token->column);
+  snprintf(destination, max, "(\"%s\", %d, %d)\n", token->content, token->line, token->column);
 }
 
 struct AMachineToken* amch_token_setContent(struct AMachineToken* token)
 {
   struct AMachineToken* new_token;
-  printf("(%s, %d, %d)\n", token->content, token->line, token->column);
+  printf("(\"%s\", %d, %d)\n", token->content, token->line, token->column);
   
   int size = strlen(token->content) + 1;
   
@@ -159,54 +163,215 @@ struct AMachineToken* amch_token_create()
   return token;
 }
 
+void amch_finishToken(struct AMachineState* machine)
+{
+  printf("Creating list element #%d (token->content: \"%s\", length: %lu)\n", machine->list->length, machine->tokenBuffer, strlen(machine->tokenBuffer));
+  list_insertAfter(machine->list, -1, (struct AMachineToken*) machine);
+  amch_resetTokenBuffer(machine);
+}
+
+int amch_000(struct AMachineState* machine)
+{
+  return AMCH_OFF;
+}
+
+int amch_100(struct AMachineState* machine)
+{
+  if (machine->currentChar == ' ' ||
+      machine->currentChar == '\n' ||
+      machine->currentChar == '\r' ||
+      machine->currentChar == '\0' ||
+      machine->currentChar == '\t')
+  {
+    return 100;
+  }
+  else if (
+    ('a' <= machine->currentChar && machine->currentChar <= 'z') ||
+    ('A' <= machine->currentChar && machine->currentChar <= 'Z') ||
+    machine->currentChar == '_'
+  )
+  {
+    machine->tokenLine = machine->line;
+    machine->tokenColumn = machine->column;
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 200;
+  }
+  else if (
+    ('0' <= machine->currentChar && machine->currentChar <= '9')
+  )
+  {
+    machine->tokenLine = machine->line;
+    machine->tokenColumn = machine->column;
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 300;
+  }
+  else if (
+    machine->currentChar == '/' && machine->ignoreComments != 0
+  )
+  {
+    machine->tokenLine = machine->line;
+    machine->tokenColumn = machine->column;
+    return 400;
+  }
+  machine->tokenLine = machine->line;
+  machine->tokenColumn = machine->column;
+  amch_chargeTokenBuffer(machine, machine->currentChar);
+  amch_finishToken(machine);
+  return 100;
+}
+
+int amch_200(struct AMachineState* machine)
+{
+  if (
+    ('a' <= machine->currentChar && machine->currentChar <= 'z') ||
+    ('A' <= machine->currentChar && machine->currentChar <= 'Z') ||
+    ('0' <= machine->currentChar && machine->currentChar <= '9') ||
+    machine->currentChar == '_'
+  )
+  {
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 200;
+  }
+  amch_finishToken(machine);
+  return 10;
+}
+
+int amch_300(struct AMachineState* machine)
+{
+  if (
+    ('0' <= machine->currentChar && machine->currentChar <= '9')
+  )
+  {
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 300;
+  }
+  else if (machine->currentChar == '.')
+  {
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 301;
+  }
+  amch_finishToken(machine);
+  return 10;
+}
+
+int amch_301(struct AMachineState* machine)
+{
+  if (
+    ('0' <= machine->currentChar && machine->currentChar <= '9')
+  )
+  {
+    amch_chargeTokenBuffer(machine, machine->currentChar);
+    return 301;
+  }
+  amch_finishToken(machine);
+  return 10;
+}
+
+int amch_400(struct AMachineState* machine)
+{
+  if (machine->currentChar == '/')
+  {
+    return 401;
+  }
+  else if (machine->currentChar == '*')
+  {
+    return 411;
+  }
+  amch_chargeTokenBuffer(machine, machine->previousChar);
+  //machine->tokenColumn--;
+  amch_finishToken(machine);
+  return 10;
+}
+
+int amch_401(struct AMachineState* machine)
+{
+  if (machine->currentChar != '\n')
+  {
+    return 401;
+  }
+  return 100;
+}
+
+int amch_411(struct AMachineState* machine)
+{
+  if (machine->currentChar != '*')
+  {
+    return 411;
+  }
+  return 412;
+}
+
+int amch_412(struct AMachineState* machine)
+{
+  if (machine->currentChar != '/')
+  {
+    return 411;
+  }
+  return 100;
+}
+
 void amch_run(struct List** list_ptr, FILE** file_ptr)
 {
   struct List* list = *list_ptr;
   FILE* file = *file_ptr;
-  
-  struct AMachineState* machine = malloc(sizeof(struct AMachineState));
-  amch_initialize(machine, file);
-  
   list = list_create(LIST_USER_DEFINED + sizeof(struct AMachineToken));
-  *list_ptr = list;
+  *list_ptr = list;  
   list->toString = &amch_token_toString;
   list->setContent = &amch_token_setContent;
   list->destroyContent = &amch_token_destroyContent;
   
-  struct AMachineToken* token = amch_token_create();
+  struct AMachineState* machine = malloc(sizeof(struct AMachineState));
+  amch_initialize(machine, list, file);
   
-  while (feof(machine->file) == 0)
+  int nextStep = 100;
+  
+  machine->ignoreComments = 1;
+  
+  while (feof(machine->file) == 0 && nextStep > 0)
   {
-    amch_readChar(machine);
-    if (machine->currentChar != ' ' &&
-        machine->currentChar != '\n' &&
-        machine->currentChar != '\r' &&
-        machine->currentChar != '\0' &&
-        machine->currentChar != '\t')
+    if (nextStep >= 100)
+      amch_readChar(machine);
+    else
+      nextStep *= 10;
+    
+    printf("Examining %c at node %d\n", machine->currentChar, nextStep);
+    
+    switch (nextStep)
     {
-      amch_chargeTokenBuffer(machine, machine->currentChar);
+      case 100:
+        nextStep = amch_100(machine);
+        break;
+      case 200:
+        nextStep = amch_200(machine);
+        break;
+      case 300:
+        nextStep = amch_300(machine);
+        break;
+      case 301:
+        nextStep = amch_301(machine);
+        break;
+      case 400:
+        nextStep = amch_400(machine);
+        break;
+      case 401:
+        nextStep = amch_401(machine);
+        break;
+      case 411:
+        nextStep = amch_411(machine);
+        break;
+      case 412:
+        nextStep = amch_412(machine);
+        break;
+      default:
+        puts("AMachine: Fehler: Undefinierter Zustand");
+        list_destroy(machine->list);
+        amch_destroy(machine);
+        exit(1);
     }
-    
-    if (machine->currentChar == '\n')
-    {
-      //token->line = machine->line;
-      //token->column = machine->column;
-      //token->content = machine->tokenBuffer;  
-      printf("Current TokenBuffer: %s (token->content: %s, length: %d)\n", machine->tokenBuffer, token->content, strlen(token->content));
-      list_insertAfter(list, -1, (struct AMachineToken*) machine);
-      
-      amch_resetTokenBuffer(machine);
-      //list_insertAfter(list, -1, (struct AMachineToken*) machine);
-    }
-    
-    
-    
-    amch_updatePosition(machine);
   }
   
   printf("\n# TokenBuffer:\n\n%s\n\n\n", machine->tokenBuffer);
   
-  free(token);
   amch_destroy(machine);
   puts("Machine killed.");
 }

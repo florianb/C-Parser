@@ -1,17 +1,20 @@
 enum AMCH_CONSTANTS {
-  AMCH_OFF = 0,
+  AMCH_OFF = -1,
   
   AMCH_TOKEN_BUFFER_SIZE = 512
 };
 
 struct AMachineState {
   char* tokenBuffer;
-  unsigned int line;
-  unsigned int column;
+  unsigned int tokenLine;
+  unsigned int tokenColumn;
   int currentChar;
   int previousChar;
-  int currentNode;
+  int ignoreComments;
+  unsigned int line;
+  unsigned int column;
   unsigned int tokenPosition;
+  struct List* list;
   FILE* file;
 };
 

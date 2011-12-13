@@ -14,4 +14,4 @@ typedef struct
 
 void* copyToken(const void* tok) ;
 
-const int n = 17 ;
+const int n = 17 / 8;
