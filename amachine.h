@@ -16,9 +16,9 @@ struct AMachineState {
 };
 
 struct AMachineToken {
-  char* content;
-  unsigned int line;
-  unsigned int column;
+  char* content; //8
+  unsigned int line; //4
+  unsigned int column; //4
 };
 
 void amch_run(struct List** list, FILE** file);

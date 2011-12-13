@@ -179,6 +179,8 @@ struct ListElement* list_createElement()
   new_element->nextElement = new_element;
   new_element->content = (struct ListElement*) LIST_UNDEFINED;
   
+  printf("Created new element at %p..\n", new_element);
+  
   //puts("Created:");
   //list_prettyPrintElement(new_element);
   
@@ -202,7 +204,7 @@ int list_destroyElement(struct List* list, struct ListElement* element)
       puts("Freeing by custom destroyContent().");
       void (*customDestroyContent) (void*);
       customDestroyContent = list->destroyContent;
-      (*customDestroyContent) (element);
+      (*customDestroyContent) (element->content);
     }
   }
   printf("Freeing element %p finally..\n", element);
