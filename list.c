@@ -91,7 +91,7 @@ struct List* list_create(int type) {
   newList->destroyContent = NULL;
   newList->firstElement = NULL;
   
-  printf("\nCreated list %p, containing %d element/s..\n", newList, newList->length);
+  //printf("\nCreated list %p, containing %d element/s..\n", newList, newList->length);
   return newList;
 }
 
@@ -179,7 +179,7 @@ struct ListElement* list_createElement()
   new_element->nextElement = new_element;
   new_element->content = (struct ListElement*) LIST_UNDEFINED;
   
-  printf("Created new element at %p..\n", new_element);
+  //printf("Created new element at %p..\n", new_element);
   
   //puts("Created:");
   //list_prettyPrintElement(new_element);
@@ -196,18 +196,18 @@ int list_destroyElement(struct List* list, struct ListElement* element)
   {
     if (list->destroyContent == LIST_UNDEFINED)
     {
-      puts("Freeing standard-content..");
+      //puts("Freeing standard-content..");
       free(element->content);
     }
     else
     {
-      puts("Freeing by custom destroyContent().");
+      //puts("Freeing by custom destroyContent().");
       void (*customDestroyContent) (void*);
       customDestroyContent = list->destroyContent;
       (*customDestroyContent) (element->content);
     }
   }
-  printf("Freeing element %p finally..\n", element);
+  //printf("Freeing element %p finally..\n", element);
   free(element);
   return LIST_SUCCESS;
 }
@@ -216,7 +216,7 @@ int list_destroyElement(struct List* list, struct ListElement* element)
   Gibt die komplette Liste mit allen enthaltenen Elementen frei
 */
 int list_destroy(struct List* list) {
-  printf("\nFreeing list %p, containing %d element/s..\n", list, list->length);
+  //printf("\nFreeing list %p, containing %d element/s..\n", list, list->length);
   if (list->length > 0)
   {
     struct ListElement* element;
@@ -226,11 +226,11 @@ int list_destroy(struct List* list) {
     {
       element = next_element;
       next_element = next_element->nextElement;
-      printf("The list must free the element %p.\n", element);
+      //printf("The list must free the element %p.\n", element);
       list_destroyElement(list, element);
     }
   }
-  printf("Freeing list %p finally..\n", list);
+  //printf("Freeing list %p finally..\n", list);
   free(list);
   return LIST_SUCCESS;
 }
@@ -249,11 +249,11 @@ int list_setContent(struct List* list, int index, void* new_content)
   
   if (list->setContent != LIST_UNDEFINED)
   {
-    printf("Running custom setContent() for %p.\n", new_content);
+    //printf("Running custom setContent() for %p.\n", new_content);
     void* (*customSetContent) (void*);
     customSetContent = list->setContent;
     element->content = (*customSetContent) (new_content);
-    puts("Custom setContent() finished..");
+    //puts("Custom setContent() finished..");
   }
   else
   {
@@ -333,7 +333,7 @@ int list_insertBefore(struct List* list, int index, void* content) {
 int list_insertAfter(struct List* list, int index, void* content) {
   struct ListElement* new_element = list_createElement();
   
-  printf("Working with raw element #%d (length: %d).\n", index, list->length);
+  //printf("Working with raw element #%d (length: %d).\n", index, list->length);
   
   if (list->length == 0) {
     list->firstElement = new_element;
@@ -341,7 +341,7 @@ int list_insertAfter(struct List* list, int index, void* content) {
   else
   {
     index = helper_modulo(index, list->length);
-    printf("Working with element #%d (length: %d).\n", index, list->length);
+    //printf("Working with element #%d (length: %d).\n", index, list->length);
     struct ListElement* given_element = list_elementInternal(list, index);
     new_element->nextElement = given_element->nextElement;
     new_element->previousElement = given_element;
@@ -810,6 +810,9 @@ void list_prettyPrint(struct List* list) {
       break;
     case LIST_STRING:
       strncpy(stringCache, "string", LIST_STRING_CACHE_SIZE);
+      break;
+    case LIST_USER_DEFINED:
+      strncpy(stringCache, "custom", LIST_STRING_CACHE_SIZE);
       break;
   }
   printf("  - Contains elements of the type \"%s\" (%d bytes per element).\n",

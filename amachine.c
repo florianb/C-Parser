@@ -30,7 +30,7 @@ void amch_initialize(struct AMachineState* machine, struct List* list, FILE* fil
   machine->file = file;
   machine->list = list;
   rewind(machine->file);
-  puts("Abstract machine initialized..");
+  //puts("Abstract machine initialized..");
 }
 
 /**
@@ -38,7 +38,7 @@ void amch_initialize(struct AMachineState* machine, struct List* list, FILE* fil
 */
 void amch_destroy(struct AMachineState* machine)
 {
-  puts("Destroying abstract machine..");
+  //puts("Destroying abstract machine..");
   fclose(machine->file);
   free(machine->tokenBuffer);
   free(machine);
@@ -51,7 +51,7 @@ void amch_updatePosition(struct AMachineState* machine)
 {
   if (machine->currentChar == '\n')
   {
-    printf("Zeile %d nach %d Zeichen abgeschlossen.\n", machine->line, machine->column);
+    //printf("Zeile %d nach %d Zeichen abgeschlossen.\n", machine->line, machine->column);
     machine->line++;
     machine->column = 0;
   }
@@ -115,7 +115,7 @@ void amch_token_toString(struct AMachineToken* token, char* destination, int max
 struct AMachineToken* amch_token_setContent(struct AMachineToken* token)
 {
   struct AMachineToken* new_token;
-  printf("(\"%s\", %d, %d)\n", token->content, token->line, token->column);
+  //printf("(\"%s\", %d, %d)\n", token->content, token->line, token->column);
   
   int size = strlen(token->content) + 1;
   
@@ -130,24 +130,29 @@ struct AMachineToken* amch_token_setContent(struct AMachineToken* token)
   new_token->column = token->column;
   new_token->content = (char*) &new_token[1];
   
-  printf("Token at %p content at %p: diff %d\n", new_token, new_token->content, (int) new_token->content - (int) new_token);
+  //printf("Token at %p content at %p: diff %d\n", new_token, new_token->content, (int) new_token->content - (int) new_token);
   
   new_token->content[0] = '\0';
   
-  printf("Allocated %d bytes at %p..\n", size, new_token);
+  //printf("Allocated %d bytes at %p..\n", size, new_token);
   
-  printf("Prepared new token %p (Size: %d, %s, %d, %d)..\n", new_token, size, new_token->content, new_token->line, new_token->column);
+  //printf("Prepared new token %p (Size: %d, %s, %d, %d)..\n", new_token, size, new_token->content, new_token->line, new_token->column);
 
   
   strcpy(new_token->content, token->content);
-  printf("Finished new token %p (Size: %d, %p, %d, %d)..\n", new_token, size, new_token->content, new_token->line, new_token->column);
+  //printf("Finished new token %p (Size: %d, %p, %d, %d)..\n", new_token, size, new_token->content, new_token->line, new_token->column);
   return new_token;
 }
 
 void amch_token_destroyContent(struct AMachineToken* token)
 {
-  printf("Freeing custom content at %p..\n", token);
+  //printf("Freeing custom content at %p..\n", token);
   free(token);
+}
+
+int amch_token_compare(struct AMachineToken* token_a, struct AMachineToken* token_b)
+{
+  return strcmp(token_a->content, token_b->content);
 }
 
 struct AMachineToken* amch_token_create()
@@ -155,7 +160,7 @@ struct AMachineToken* amch_token_create()
   struct AMachineToken* token = malloc(sizeof(struct AMachineToken) + 1);
   token->content = (char*) &token[1];
   
-  printf("Declared token %p (size %lu bytes) with string at %p..\n", token, sizeof(struct AMachineToken) + 1, token->content);
+  //printf("Declared token %p (size %lu bytes) with string at %p..\n", token, sizeof(struct AMachineToken) + 1, token->content);
   
   token->content[0] = '\0';
   token->line = 0;
@@ -165,7 +170,7 @@ struct AMachineToken* amch_token_create()
 
 void amch_finishToken(struct AMachineState* machine)
 {
-  printf("Creating list element #%d (token->content: \"%s\", length: %lu)\n", machine->list->length, machine->tokenBuffer, strlen(machine->tokenBuffer));
+  //printf("Creating list element #%d (token->content: \"%s\", length: %lu)\n", machine->list->length, machine->tokenBuffer, strlen(machine->tokenBuffer));
   list_insertAfter(machine->list, -1, (struct AMachineToken*) machine);
   amch_resetTokenBuffer(machine);
 }
@@ -319,6 +324,7 @@ void amch_run(struct List** list_ptr, FILE** file_ptr)
   list->toString = &amch_token_toString;
   list->setContent = &amch_token_setContent;
   list->destroyContent = &amch_token_destroyContent;
+  list->compare = &amch_token_compare;
   
   struct AMachineState* machine = malloc(sizeof(struct AMachineState));
   amch_initialize(machine, list, file);
@@ -334,7 +340,7 @@ void amch_run(struct List** list_ptr, FILE** file_ptr)
     else
       nextStep *= 10;
     
-    printf("Examining %c at node %d\n", machine->currentChar, nextStep);
+    //printf("Examining %c at node %d\n", machine->currentChar, nextStep);
     
     switch (nextStep)
     {
@@ -370,8 +376,6 @@ void amch_run(struct List** list_ptr, FILE** file_ptr)
     }
   }
   
-  printf("\n# TokenBuffer:\n\n%s\n\n\n", machine->tokenBuffer);
-  
   amch_destroy(machine);
-  puts("Machine killed.");
+  //puts("Machine killed.");
 }
